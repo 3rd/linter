@@ -1,0 +1,232 @@
+match: typescript
+explore: true
+plugins:
+  - builtin
+  - "@typescript-eslint/eslint-plugin"
+overrides:
+  - files: ["*.ts", "*.tsx", "*.js"]
+    parser: "@typescript-eslint/parser"
+    parserOptions:
+      project: "tsconfig.json"
+  - files: ["*.ts", "*.tsx"]
+    rules:
+      constructor-super: off # ts(2335) & ts(2377)
+      getter-return: off # ts(2378)
+      no-const-assign: off # ts(2588)
+      no-dupe-args: off # ts(2300)
+      no-dupe-class-members: off # ts(2393) & ts(2300)
+      no-dupe-keys: off # ts(1117)
+      no-func-assign: off # ts(2539)
+      no-import-assign: off # ts(2539) & ts(2540)
+      no-new-symbol: off # ts(2588)
+      no-obj-calls: off # ts(2349)
+      no-redeclare: off # ts(2451)
+      no-setter-return: off # ts(2408)
+      no-this-before-super: off # ts(2376)
+      no-undef: off # ts(2304)
+      no-unreachable: off # ts(7027)
+      no-unsafe-negation: off # ts(2365) & ts(2360) & ts(2358)
+      valid-typeof: off # ts(2367)
+  - files: ["*.vue"]
+    parser: vue-eslint-parser
+    parserOptions:
+      project: "tsconfig.json"
+      extraFileExtensions: [".vue"]
+      parser:
+        "<template>": espree
+        ts: "@typescript-eslint/parser"
+        js: "@typescript-eslint/parser"
+  - files: ["*.js", "*.vue"]
+    rules:
+      "@typescript-eslint/no-unsafe-return": off
+
+rules:
+  no-array-constructor: off
+  brace-style: off
+  comma-dangle: off
+  comma-spacing: off
+  default-param-last: off
+  dot-notation: off
+  func-call-spacing: off
+  indent: off
+  init-declarations: off
+  keyword-spacing: off
+  lines-between-class-members: off
+  no-duplicate-imports: off
+  no-empty-function: off
+  no-extra-parens: off
+  no-extra-semi: off
+  no-implied-eval: off
+  no-invalid-this: off
+  no-loop-func: off
+  no-loss-of-precision: off
+  no-magic-numbers: off
+  no-shadow: off
+  no-throw-literal: off
+  no-unused-expressions: off
+  no-unused-vars: off
+  no-use-before-define: off
+  no-useless-constructor: off
+  no-var: error # ts transpiles let/const to var, so no need for vars any more
+  object-curly-spacing: off
+  prefer-const: error # ts provides better types with const
+  prefer-rest-params: error # ts provides better types with rest args over arguments
+  prefer-spread: error # ts transpiles spread to apply, so no need for manual apply
+  quotes: off
+  require-await: off
+  no-return-await: off
+  semi: off
+  space-before-function-paren: off
+  space-infix-ops: off
+
+  # debug
+
+  # builtin extensions
+  "@typescript-eslint/brace-style": off
+  "@typescript-eslint/comma-dangle": off
+  "@typescript-eslint/comma-spacing": off
+  "@typescript-eslint/default-param-last": error
+  "@typescript-eslint/dot-notation": off
+  "@typescript-eslint/func-call-spacing": off
+  "@typescript-eslint/indent": off
+  "@typescript-eslint/init-declarations": off
+  "@typescript-eslint/keyword-spacing": off
+  "@typescript-eslint/lines-between-class-members": off
+  "@typescript-eslint/no-array-constructor": error
+  "@typescript-eslint/no-dupe-class-members": error
+  "@typescript-eslint/no-duplicate-imports": off
+  "@typescript-eslint/no-empty-function": error
+  "@typescript-eslint/no-extra-parens": off
+  # - error
+  # - all
+  # - enforceForArrowConditionals: false
+  #   enforceForSequenceExpressions: false
+  #   ignoreJSX: all
+  #   nestedBinaryExpressions: false
+  "@typescript-eslint/no-extra-semi": error
+  "@typescript-eslint/no-implied-eval": error
+  "@typescript-eslint/no-invalid-this": off
+  "@typescript-eslint/no-loop-func": error
+  "@typescript-eslint/no-loss-of-precision": error
+  "@typescript-eslint/no-magic-numbers":
+    - off
+    - ignore: [-1, 0, 1, 2, 10, 60, 100, 1000, 3000, 1234, 8000, 8080]
+  "@typescript-eslint/no-redeclare": error
+  "@typescript-eslint/no-shadow": error
+  "@typescript-eslint/no-unused-expressions": error
+  "@typescript-eslint/no-unused-vars": off # ts
+  "@typescript-eslint/no-use-before-define": error
+  "@typescript-eslint/no-useless-constructor": error
+  "@typescript-eslint/object-curly-spacing": off
+  "@typescript-eslint/quotes": off
+  "@typescript-eslint/require-await": off
+  "@typescript-eslint/return-await": error
+  "@typescript-eslint/semi": off
+  "@typescript-eslint/space-before-function-paren": off
+  "@typescript-eslint/space-infix-ops": off
+  # sanity
+  "@typescript-eslint/adjacent-overload-signatures": error
+  "@typescript-eslint/array-type": error
+  "@typescript-eslint/await-thenable": error
+  "@typescript-eslint/ban-ts-comment": off
+  "@typescript-eslint/ban-tslint-comment": off
+  "@typescript-eslint/ban-types": off
+  "@typescript-eslint/class-literal-property-style": off
+  "@typescript-eslint/consistent-indexed-object-style": error
+  "@typescript-eslint/consistent-type-assertions": error
+  "@typescript-eslint/consistent-type-definitions": off
+  "@typescript-eslint/consistent-type-imports": off # error
+  "@typescript-eslint/explicit-function-return-type": off
+  "@typescript-eslint/explicit-member-accessibility": off
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "@typescript-eslint/no-base-to-string": off # slow
+  "@typescript-eslint/no-confusing-non-null-assertion": error
+  "@typescript-eslint/no-confusing-void-expression": off #slow
+  "@typescript-eslint/no-dynamic-delete": error
+  "@typescript-eslint/no-empty-interface": error
+  "@typescript-eslint/no-explicit-any": off
+  "@typescript-eslint/no-extra-non-null-assertion": error
+  "@typescript-eslint/no-extraneous-class": error
+  "@typescript-eslint/no-floating-promises": off # slow
+  "@typescript-eslint/no-for-in-array": error
+  "@typescript-eslint/no-implicit-any-catch": off
+  "@typescript-eslint/no-inferrable-types": error
+  "@typescript-eslint/no-invalid-void-type": error
+  "@typescript-eslint/no-meaningless-void-operator": error
+  "@typescript-eslint/no-misused-new": error
+  "@typescript-eslint/no-misused-promises": off # slow
+  "@typescript-eslint/no-namespace": off
+  "@typescript-eslint/no-non-null-asserted-nullish-coalescing": error
+  "@typescript-eslint/no-non-null-asserted-optional-chain": error
+  "@typescript-eslint/no-non-null-assertion": off
+  "@typescript-eslint/no-require-imports": off
+  "@typescript-eslint/no-restricted-imports": error
+  "@typescript-eslint/no-this-alias": off
+  "@typescript-eslint/no-throw-literal": error
+  "@typescript-eslint/no-type-alias": off
+  "@typescript-eslint/no-unnecessary-boolean-literal-compare": error
+  "@typescript-eslint/no-unnecessary-condition": off # slow
+  "@typescript-eslint/no-unnecessary-qualifier": off # slow
+  "@typescript-eslint/no-unnecessary-type-arguments": error
+  "@typescript-eslint/no-unnecessary-type-assertion": off # slow
+  "@typescript-eslint/no-unnecessary-type-constraint": error
+  "@typescript-eslint/no-unsafe-argument": off
+  "@typescript-eslint/no-unsafe-assignment": off
+  "@typescript-eslint/no-unsafe-call": off
+  "@typescript-eslint/no-unsafe-member-access": off
+  "@typescript-eslint/no-unsafe-return": off
+  "@typescript-eslint/no-var-requires": off
+  "@typescript-eslint/non-nullable-type-assertion-style": off
+  "@typescript-eslint/prefer-as-const": error
+  "@typescript-eslint/prefer-enum-initializers": error
+  "@typescript-eslint/prefer-for-of": error
+  "@typescript-eslint/prefer-function-type": error
+  "@typescript-eslint/prefer-includes": error
+  "@typescript-eslint/prefer-literal-enum-member": error
+  "@typescript-eslint/prefer-namespace-keyword": off
+  "@typescript-eslint/prefer-nullish-coalescing": error
+  "@typescript-eslint/prefer-optional-chain": error
+  "@typescript-eslint/prefer-readonly": off
+  "@typescript-eslint/prefer-readonly-parameter-types": off
+  "@typescript-eslint/prefer-reduce-type-parameter": error
+  "@typescript-eslint/prefer-regexp-exec": error
+  "@typescript-eslint/prefer-return-this-type": error
+  "@typescript-eslint/prefer-string-starts-ends-with": error
+  "@typescript-eslint/prefer-ts-expect-error": off
+  "@typescript-eslint/promise-function-async": off # slow
+  "@typescript-eslint/require-array-sort-compare": error
+  "@typescript-eslint/restrict-plus-operands": off # slow
+  "@typescript-eslint/restrict-template-expressions": off # slow
+  "@typescript-eslint/strict-boolean-expressions": off
+  "@typescript-eslint/switch-exhaustiveness-check": error
+  "@typescript-eslint/unbound-method": off
+  # style
+  "@typescript-eslint/member-delimiter-style": error
+  "@typescript-eslint/member-ordering": off
+  "@typescript-eslint/method-signature-style": off
+  "@typescript-eslint/naming-convention": off
+  "@typescript-eslint/padding-line-between-statements": off
+  "@typescript-eslint/sort-type-union-intersection-members": error
+  "@typescript-eslint/type-annotation-spacing": error
+  # typings
+  "@typescript-eslint/triple-slash-reference": off
+  "@typescript-eslint/typedef": off
+  "@typescript-eslint/unified-signatures": error
+  # inbox
+  "@typescript-eslint/block-spacing": off
+  "@typescript-eslint/consistent-generic-constructors": error
+  "@typescript-eslint/consistent-type-exports": [error, { fixMixedExportsWithInlineTypeSpecifier: true }]
+  "@typescript-eslint/key-spacing": off
+  "@typescript-eslint/lines-around-comment": off
+  "@typescript-eslint/no-duplicate-enum-values": error
+  "@typescript-eslint/no-duplicate-type-constituents": error
+  "@typescript-eslint/no-import-type-side-effects": error
+  "@typescript-eslint/no-mixed-enums": error
+  "@typescript-eslint/no-parameter-properties": off # deprecated
+  "@typescript-eslint/no-redundant-type-constituents": error
+  "@typescript-eslint/no-unsafe-declaration-merging": error
+  "@typescript-eslint/no-unsafe-enum-comparison": off
+  "@typescript-eslint/no-useless-empty-export": error
+  "@typescript-eslint/parameter-properties": error
+  "@typescript-eslint/sort-type-constituents": error
+  "@typescript-eslint/space-before-blocks": off

@@ -1,0 +1,73 @@
+match: vue
+explore: true
+parser: "vue-eslint-parser"
+parserOptions:
+  parser: "@typescript-eslint/parser"
+  extraFileExtensions: [".vue"]
+plugins:
+  - eslint-plugin-vue
+rules:
+  # base
+  vue/require-explicit-emits: off
+  # style
+  vue/func-call-spacing: off
+  vue/html-comment-content-newline: off
+  vue/html-comment-content-spacing: off
+  vue/html-comment-indent: off
+  vue/key-spacing: off
+  vue/keyword-spacing: off
+  vue/no-irregular-whitespace: off
+  vue/object-curly-newline: off
+  vue/object-curly-spacing: off
+  vue/object-property-newline: off
+  vue/operator-linebreak: off
+  vue/padding-line-between-blocks: off
+  vue/script-indent: off
+  vue/sort-keys: off
+  vue/space-in-parens: off
+  vue/space-infix-ops: off
+  vue/space-unary-ops: off
+  vue/template-curly-spacing: off
+  # other
+  vue/component-options-name-casing: error
+  vue/define-macros-order: error
+  vue/first-attribute-linebreak: error
+  vue/match-component-import-name: error
+  vue/max-lines-per-block: off
+  vue/no-child-content: error
+  vue/no-computed-properties-in-data: error
+  vue/no-console: error
+  vue/no-deprecated-router-link-tag-prop: error
+  vue/no-expose-after-await: error
+  vue/no-loss-of-precision: error
+  vue/no-reserved-props: error
+  vue/no-root-v-if: error
+  vue/no-undef-components: error
+  vue/no-undef-properties: off
+  vue/no-v-text-v-html-on-component: error
+  vue/object-shorthand: error
+  vue/prefer-import-from-vue: error
+  vue/prefer-prop-type-boolean-first: error
+  vue/prefer-separate-static-class: error
+  vue/prefer-true-attribute-shorthand: error
+  vue/quote-props: [error, as-needed]
+  # custom
+  vue/array-element-newline: off
+  vue/multiline-ternary: error
+  vue/no-required-prop-with-default: error
+  vue/no-restricted-block: off
+  vue/no-restricted-call-after-await: off
+  vue/no-restricted-class: off
+  vue/no-restricted-component-options: off
+  vue/no-restricted-custom-event: off
+  vue/no-restricted-html-elements: off
+  vue/no-restricted-props: off
+  vue/no-restricted-static-attribute: off
+  vue/no-restricted-syntax: off
+  vue/no-restricted-v-bind: off
+  vue/padding-line-between-tags: off
+  vue/padding-lines-in-component-definition: off
+  vue/require-prop-comment: off
+  vue/valid-attribute-name: error
+  vue/valid-model-definition: error
+  vue/no-restricted-component-names: off

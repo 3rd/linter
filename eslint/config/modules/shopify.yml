@@ -1,0 +1,41 @@
+explore: true
+plugins:
+  - "@shopify/eslint-plugin"
+rules:
+  # sanity
+  "@shopify/binary-assignment-parens": off
+  "@shopify/class-property-semi": error
+  "@shopify/no-ancestor-directory-import": off # slow
+  "@shopify/no-debugger": off
+  "@shopify/no-fully-static-classes": error
+  "@shopify/no-namespace-imports": off
+  "@shopify/no-useless-computed-properties": error
+  "@shopify/prefer-class-properties": off
+  "@shopify/prefer-early-return": [error, { "maximumStatements": 3 }]
+  "@shopify/prefer-module-scope-constants": off
+  "@shopify/restrict-full-import": [error, ["lodash"]]
+  # typescript
+  "@shopify/typescript/prefer-build-client-schema": error
+  "@shopify/typescript/prefer-pascal-case-enums": off
+  "@shopify/typescript/prefer-singular-enums": error
+  # react
+  "@shopify/jsx-no-complex-expressions": off
+  "@shopify/jsx-no-hardcoded-content": off
+  "@shopify/jsx-prefer-fragment-wrappers": off
+  "@shopify/react-hooks-strict-return": error
+  "@shopify/react-initialize-state": off
+  "@shopify/react-no-multiple-render-methods": off
+  "@shopify/react-prefer-private-members": off
+  "@shopify/react-require-autocomplete": off
+  "@shopify/react-type-state": off
+  # misc
+  "@shopify/images-no-direct-imports": off
+  "@shopify/jest/no-all-mocks-methods": off
+  "@shopify/jest/no-snapshots": off
+  "@shopify/polaris-no-bare-stack-item": off
+  "@shopify/polaris-prefer-sectioned-prop": off
+  "@shopify/prefer-twine": off
+  "@shopify/sinon-no-restricted-features": off
+  "@shopify/sinon-prefer-meaningful-assertions": off
+  "@shopify/strict-component-boundaries": off
+  "@shopify/webpack/no-unnamed-dynamic-imports": off
