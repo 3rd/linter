@@ -17,7 +17,7 @@ if (require.main === module) {
     explore(project);
   } else {
     const config = project.getConfig();
-    console.log(config.overrides);
+    // console.log(config.overrides);
   }
 } else if (fs.existsSync(configPath)) {
   module.exports = require(configPath);

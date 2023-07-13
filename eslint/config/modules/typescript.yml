@@ -206,7 +206,6 @@ rules:
   "@typescript-eslint/method-signature-style": off
   "@typescript-eslint/naming-convention": off
   "@typescript-eslint/padding-line-between-statements": off
-  "@typescript-eslint/sort-type-union-intersection-members": error
   "@typescript-eslint/type-annotation-spacing": error
   # typings
   "@typescript-eslint/triple-slash-reference": off
