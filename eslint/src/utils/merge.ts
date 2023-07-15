@@ -8,9 +8,7 @@ const merge = (...objs: unknown[]) => {
     // eslint-disable-next-line consistent-return
     mergeWith(out, obj, (a: unknown, b: unknown) => {
       if (Array.isArray(a) && Array.isArray(b)) {
-        if (a.length === 1 && b.length === 1) {
-          if (isEqual(a[0], b[0])) return a as unknown[];
-        }
+        if (a.length === 1 && b.length === 1 && isEqual(a[0], b[0])) return a as unknown[];
         return unionWith(a, b, isEqual) as unknown[];
       }
     });

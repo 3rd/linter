@@ -3,6 +3,7 @@ explore: true
 plugins:
   - builtin
   - "@typescript-eslint/eslint-plugin"
+  - eslint-plugin-collation
 overrides:
   - files: ["*.ts", "*.tsx", "*.js"]
     parser: "@typescript-eslint/parser"
@@ -94,7 +95,6 @@ rules:
   "@typescript-eslint/lines-between-class-members": off
   "@typescript-eslint/no-array-constructor": error
   "@typescript-eslint/no-dupe-class-members": error
-  "@typescript-eslint/no-duplicate-imports": off
   "@typescript-eslint/no-empty-function": error
   "@typescript-eslint/no-extra-parens": off
   # - error
@@ -149,7 +149,6 @@ rules:
   "@typescript-eslint/no-extraneous-class": error
   "@typescript-eslint/no-floating-promises": off # slow
   "@typescript-eslint/no-for-in-array": error
-  "@typescript-eslint/no-implicit-any-catch": off
   "@typescript-eslint/no-inferrable-types": error
   "@typescript-eslint/no-invalid-void-type": error
   "@typescript-eslint/no-meaningless-void-operator": error
@@ -206,7 +205,7 @@ rules:
   "@typescript-eslint/method-signature-style": off
   "@typescript-eslint/naming-convention": off
   "@typescript-eslint/padding-line-between-statements": off
-  "@typescript-eslint/type-annotation-spacing": error
+  "@typescript-eslint/type-annotation-spacing": off
   # typings
   "@typescript-eslint/triple-slash-reference": off
   "@typescript-eslint/typedef": off
@@ -221,7 +220,6 @@ rules:
   "@typescript-eslint/no-duplicate-type-constituents": error
   "@typescript-eslint/no-import-type-side-effects": error
   "@typescript-eslint/no-mixed-enums": error
-  "@typescript-eslint/no-parameter-properties": off # deprecated
   "@typescript-eslint/no-redundant-type-constituents": error
   "@typescript-eslint/no-unsafe-declaration-merging": error
   "@typescript-eslint/no-unsafe-enum-comparison": off
@@ -229,3 +227,9 @@ rules:
   "@typescript-eslint/parameter-properties": error
   "@typescript-eslint/sort-type-constituents": error
   "@typescript-eslint/space-before-blocks": off
+  # collation
+  collation/group-exports: warn
+  collation/no-default-export: warn
+  collation/no-inline-export: warn
+  collation/sort-dependency-list: warn # react
+  collation/sort-exports: warn

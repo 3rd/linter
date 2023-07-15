@@ -4,6 +4,7 @@ plugins:
   - eslint-plugin-react
   - eslint-plugin-react-hooks
   - eslint-plugin-react-perf
+  - eslint-plugin-react-refresh
 settings:
   react:
     version: detect
@@ -13,7 +14,7 @@ rules:
     - warn
     - validateNested: true
       rule: "^(is|has|was|will|did|can|enable|disable|no|ignore|force|hide|with)[A-Z]([A-Za-z0-9]?)+"
-  react/button-has-type: off
+  react/button-has-type: warn
   react/default-props-match-prop-types: error
   react/destructuring-assignment: off
   react/display-name: off
@@ -47,7 +48,7 @@ rules:
   react/jsx-no-comment-textnodes: error
   react/jsx-no-constructed-context-values: error
   react/jsx-no-duplicate-props: error
-  react/jsx-no-leaked-render: off
+  react/jsx-no-leaked-render: error
   react/jsx-no-literals: off
   react/jsx-no-script-url: error
   react/jsx-no-target-blank: error
@@ -57,7 +58,19 @@ rules:
   react/jsx-pascal-case: error
   react/jsx-props-no-multi-spaces: off
   react/jsx-props-no-spreading: off
-  react/jsx-sort-props: error
+  react/sort-prop-types:
+    - error
+    - callbacksLast: true
+      noSortAlphabetically: false
+      sortShapeProp: true
+  react/jsx-sort-props:
+    - error
+    - callbacksLast: true
+      multiline: ignore
+      noSortAlphabetically: false
+      reservedFirst: true
+      shorthandFirst: false
+      shorthandLast: true
   react/jsx-space-before-closing: off
   react/jsx-tag-spacing: off
   react/jsx-uses-react: error
@@ -105,7 +118,6 @@ rules:
   react/require-render-return: error
   react/self-closing-comp: error
   react/sort-comp: off
-  react/sort-prop-types: error
   react/state-in-constructor: off
   react/static-property-placement: off
   react/style-prop-object: error
@@ -113,6 +125,7 @@ rules:
   react/sort-default-props:
     - error
     - ignoreCase: false
+  react/jsx-sort-default-props: off # deprecated
   # react-hooks
   react-hooks/exhaustive-deps: warn
   react-hooks/rules-of-hooks: error
@@ -121,3 +134,7 @@ rules:
   react-perf/jsx-no-new-array-as-prop: off
   react-perf/jsx-no-new-function-as-prop: off
   react-perf/jsx-no-new-object-as-prop: off
+  # react-refresh
+  react-refresh/only-export-components:
+    - warn
+    - "allowConstantExport": true

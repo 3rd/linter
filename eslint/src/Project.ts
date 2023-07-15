@@ -5,7 +5,7 @@ import type { PackageJson } from "type-fest";
 import { findUpSync } from "find-up";
 import { LINTER_CONFIG_DIR } from "./env";
 import { getFilesDeep, merge, readYAML } from "./utils";
-import Module from "./Module";
+import { Module } from "./Module";
 import type { IESLintConfig } from "./eslint/eslint-types";
 import type { TModuleConfig } from "./Module";
 
@@ -25,6 +25,7 @@ class Project {
   root: string;
   modules: Module[] = [];
   dependencies: IProjectDependency[] = [];
+  packageJson: PackageJson = {} as PackageJson;
 
   constructor(root: string) {
     this.root = root;
@@ -56,23 +57,28 @@ class Project {
   }
 
   get context(): Record<string, boolean> {
-    const vueDependency = this.findDependency("vue");
-
     return {
-      typescript: this.hasPath("tsconfig.json") || this.hasDependency("typescript"),
+      "react-native": this.hasDependency("react-native"),
+      "react-web": this.hasDependency("react") && !this.hasDependency("react-native"),
+      browser: !this.packageJson.engines?.node,
+      graphql: this.hasDependency("graphql"),
       jest: this.hasDependency("jest"),
-      browser: ["react", "vue", "svelte"].some((dependency) => this.hasDependency(dependency)),
+      next: this.hasDependency("next"),
+      node: Boolean(this.packageJson.engines?.node),
       react: this.hasDependency("react"),
       svelte: this.hasDependency("svelte"),
+      typescript: this.hasPath("tsconfig.json") || this.hasDependency("typescript"),
       vue: this.hasDependency("vue"),
-      vue2: vueDependency?.version.replaceAll(/[^\d.]/g, "").startsWith("2.") ?? false,
-      vue3: vueDependency?.version.replaceAll(/[^\d.]/g, "").startsWith("3.") ?? false,
     };
   }
 
   load() {
     const roots = this.getRoots();
     const dependencies: IProjectDependency[] = [];
+
+    if (roots.length > 0) {
+      this.packageJson = JSON.parse(readFileSync(resolve(roots[0], "package.json"), "utf8")) as PackageJson;
+    }
 
     for (const root of roots) {
       const packageJson = JSON.parse(readFileSync(resolve(root, "package.json"), "utf8")) as PackageJson;
@@ -177,5 +183,4 @@ class Project {
   }
 }
 
-export default Project;
 export { Project };

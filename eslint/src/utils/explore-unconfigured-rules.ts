@@ -1,5 +1,5 @@
 import picocolors from "picocolors";
-import type Project from "../Project";
+import type { Project } from "../Project";
 
 const { yellow, gray, green, magenta, bold } = picocolors;
 

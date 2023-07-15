@@ -1,7 +1,6 @@
 import { omit } from "lodash";
-import eslintPlugins from "./eslint/plugins";
-import Rule from "./Rule";
-import { isDev } from "./env";
+import { plugins as eslintPlugins } from "./eslint/plugins";
+import { Rule } from "./Rule";
 import type { IESLintConfig, TESLintConfigRuleValue } from "./eslint/eslint-types";
 
 type TModuleConfig = IESLintConfig & {
@@ -25,26 +24,16 @@ class Module {
       for (const pluginName of config.plugins) {
         const plugin = eslintPlugins[pluginName];
         if (!plugin) throw new Error(`Unknown plugin: ${pluginName}`);
-        for (const rule of plugin.rules) {
-          this.addRule(rule);
-        }
+        for (const rule of plugin.rules) this.addRule(rule);
       }
     }
 
     if (config.rules) {
       for (const [ruleName, ruleConfig] of Object.entries(config.rules)) {
-        if (isDev) {
-          const rule = this.rules.get(ruleName);
-          if (!rule) {
-            throw new Error(`[module:${name}] Can't find rule: ${ruleName}`);
-          }
-          rule.setConfig(ruleConfig);
-          this.rules.set(ruleName, rule);
-        } else {
-          const rule = new Rule(ruleName, null, "x");
-          rule.setConfig(ruleConfig);
-          this.rules.set(ruleName, rule);
-        }
+        const rule = this.rules.get(ruleName);
+        if (!rule) throw new Error(`[module:${name}] Can't find rule: ${ruleName}`);
+        rule.setConfig(ruleConfig);
+        this.rules.set(ruleName, rule);
       }
     }
   }
@@ -57,6 +46,7 @@ class Module {
     if (this.rules.has(rule.key)) {
       throw new Error(`Error: Module "${this.name}" has already registered rule "${rule.key}".`);
     }
+
     this.rules.set(rule.key, rule);
   }
 
@@ -75,5 +65,5 @@ class Module {
   }
 }
 
-export default Module;
 export type { TModuleConfig };
+export { Module };

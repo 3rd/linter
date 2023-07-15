@@ -78,5 +78,5 @@ interface IESLintConfig {
   })[];
 }
 
-export type { IESLintPluginRule, IESLintPlugin, TESLintConfigEnvValue, TESLintConfigRuleValue, IESLintConfig };
+export type { IESLintConfig, IESLintPlugin, IESLintPluginRule, TESLintConfigEnvValue, TESLintConfigRuleValue };
 export { ESLINT_PLUGIN_RULE_TYPE };

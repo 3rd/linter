@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import Project from "./Project";
+import { Project } from "./Project";
 import { LINTER_ROOT } from "./env";
 import { explore } from "./utils/explore-unconfigured-rules";
 
@@ -17,7 +17,7 @@ if (require.main === module) {
     explore(project);
   } else {
     const config = project.getConfig();
-    // console.log(config.overrides);
+    console.log(config);
   }
 } else if (fs.existsSync(configPath)) {
   module.exports = require(configPath);

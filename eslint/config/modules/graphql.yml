@@ -1,0 +1,75 @@
+match: graphql
+explore: true
+plugins:
+  - "@graphql-eslint/eslint-plugin"
+rules:
+  graphql/executable-definitions: off
+  graphql/fields-on-correct-type: off
+  graphql/fragments-on-composite-type: off
+  graphql/known-argument-names: off
+  graphql/known-directives: off
+  graphql/known-fragment-names: off
+  graphql/known-type-names: off
+  graphql/lone-anonymous-operation: off
+  graphql/lone-schema-definition: off
+  graphql/no-fragment-cycles: off
+  graphql/no-undefined-variables: off
+  graphql/no-unused-fragments: off
+  graphql/no-unused-variables: off
+  graphql/overlapping-fields-can-be-merged: off
+  graphql/possible-fragment-spread: off
+  graphql/possible-type-extension: off
+  graphql/provided-required-arguments: off
+  graphql/scalar-leafs: off
+  graphql/one-field-subscriptions: off
+  graphql/unique-argument-names: off
+  graphql/unique-directive-names: off
+  graphql/unique-directive-names-per-location: off
+  graphql/unique-enum-value-names: off
+  graphql/unique-field-definition-names: off
+  graphql/unique-input-field-names: off
+  graphql/unique-operation-types: off
+  graphql/unique-type-names: off
+  graphql/unique-variable-names: off
+  graphql/value-literals-of-correct-type: off
+  graphql/variables-are-input-types: off
+  graphql/variables-in-allowed-position: off
+  graphql/alphabetize: off
+  graphql/description-style: off
+  graphql/input-name: off
+  graphql/lone-executable-definition: off
+  graphql/match-document-filename: off
+  graphql/naming-convention: off
+  graphql/no-anonymous-operations: off
+  graphql/no-case-insensitive-enum-values-duplicates: off
+  graphql/no-deprecated: off
+  graphql/no-duplicate-fields: off
+  graphql/no-hashtag-description: off
+  graphql/no-one-place-fragments: off
+  graphql/no-root-type: off
+  graphql/no-scalar-result-type-on-mutation: off
+  graphql/no-typename-prefix: off
+  graphql/no-unreachable-types: off
+  graphql/no-unused-fields: off
+  graphql/relay-arguments: off
+  graphql/relay-connection-types: off
+  graphql/relay-edge-types: off
+  graphql/relay-page-info: off
+  graphql/require-deprecation-date: off
+  graphql/require-deprecation-reason: off
+  graphql/require-description: off
+  graphql/require-field-of-type-query-in-mutation-result: off
+  graphql/require-id-when-available: off
+  graphql/require-import-fragment: off
+  graphql/require-nullable-fields-with-oneof: off
+  graphql/require-nullable-result-in-root: off
+  graphql/require-type-pattern-with-oneof: off
+  graphql/selection-set-depth: off
+  graphql/strict-id-in-types: off
+  graphql/unique-fragment-name: off
+  graphql/unique-operation-name: off
+# overrides:
+#   - files: ["*.graphql", "*.gql"]
+#     parser: "@graphql-eslint/eslint-plugin"
+#   - files: ["*.ts", "*.tsx"]
+#     processor: "@graphql-eslint/graphql"

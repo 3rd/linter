@@ -1,7 +1,7 @@
 explore: true
 parser: "@babel/eslint-parser"
 parserOptions:
-  ecmaVersion: 12
+  ecmaVersion: 2020
   ecmaFeatures:
     modules: true
     impliedStrict: true
@@ -52,16 +52,22 @@ rules:
   vars-on-top: off
   one-var-declaration-per-line: off
   one-var: off
-  strict: [error, never]
+  strict:
+    - error
+    - safe
   symbol-description: error
-  unicode-bom: [error, never]
+  unicode-bom:
+    - error
+    - never
   valid-typeof: error
   yoda: error
   require-yield: error
   require-unicode-regexp: off
   require-await: off
   require-atomic-updates: error
-  radix: [error, as-needed]
+  radix:
+    - error
+    - as-needed
   prefer-template: error
   prefer-spread: error
   prefer-rest-params: error
@@ -98,7 +104,7 @@ rules:
   no-return-await: error
   no-return-assign: error
   constructor-super: error
-  consistent-this: ["error", "self"]
+  consistent-this: [error, self]
   consistent-return: off
   no-redeclare: error
   no-prototype-builtins: error
@@ -108,7 +114,16 @@ rules:
   no-process-env: off
   no-plusplus: off
   no-path-concat: off
-  no-param-reassign: error
+  no-param-reassign:
+    - error
+    - props: true
+      ignorePropertyModificationsFor:
+        - acc
+        - accumulator
+        - carry
+        - draft
+      # ignorePropertyModificationsForRegex:
+      #   - ^acc
   no-octal-escape: error
   no-octal: warn
   no-obj-calls: error
@@ -259,13 +274,13 @@ rules:
   array-bracket-spacing: off
   array-bracket-newline: off
   lines-around-directive: off
-  generator-star-spacing: error
+  generator-star-spacing: off
   key-spacing: off
-  array-element-newline: [error, consistent]
-  jsx-quotes: [error, prefer-double]
+  array-element-newline: off
+  jsx-quotes: off
   lines-around-comment: off
   function-paren-newline: off # [error, consistent]
-  function-call-argument-newline: [error, consistent]
+  function-call-argument-newline: off
   func-call-spacing: error
   camelcase: off
   linebreak-style: [error, unix]
@@ -276,7 +291,7 @@ rules:
   arrow-body-style: off
   computed-property-spacing: off
   object-property-newline: off
-  object-curly-spacing: [error, always]
+  object-curly-spacing: off
   multiline-ternary: off # [error, always-multiline]
   max-len: off
   multiline-comment-style: off
@@ -298,13 +313,13 @@ rules:
   newline-before-return: off
   space-before-function-paren: off
   space-in-parens: off # [error, never]
-  space-infix-ops: error
+  space-infix-ops: off
   block-spacing: off
-  arrow-spacing: error
-  space-unary-ops: error
-  switch-colon-spacing: error
-  template-curly-spacing: [error, never]
-  template-tag-spacing: [error, never]
+  arrow-spacing: off
+  space-unary-ops: off
+  switch-colon-spacing: off
+  template-curly-spacing: off
+  template-tag-spacing: off
   implicit-arrow-linebreak: off # [error, beside]
   wrap-iife: [error, inside]
   quotes: off
@@ -312,7 +327,7 @@ rules:
   wrap-regex: off
   yield-star-spacing: off
   indent: off
-  rest-spread-spacing: [error, never]
+  rest-spread-spacing: off
   no-regex-spaces: error
   no-inline-comments: off
   spaced-comment: off
