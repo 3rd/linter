@@ -106,6 +106,7 @@ class Project {
         return new Module(name, readYAML(modulePath) as TModuleConfig);
       })
       .filter((module) => {
+        if (!module.enabled) return false;
         if (process.env.EXPLORE) return true;
         if (!module.config.match) return true;
         for (const matchRule of Array.isArray(module.config.match) ? module.config.match : [module.config.match]) {
@@ -146,7 +147,7 @@ class Project {
       config = merge(config, module.getConfig()) as IESLintConfig;
     }
 
-    // load project-local overrides
+    // load project-local rule overrides
     try {
       const localConfigPath = findUpSync("eslinter.yml");
       if (localConfigPath) {
@@ -161,7 +162,7 @@ class Project {
       }
     } catch {}
 
-    // handle tsconfig.json in upper project
+    // parserOptions.project - handle tsconfig.json in upper project
     if (this.context.typescript && !this.hasFile("tsconfig.json")) {
       const tsconfigPath = findUpSync("tsconfig.json");
       if (tsconfigPath) {
@@ -170,7 +171,7 @@ class Project {
           if (override.parserOptions?.project === "tsconfig.json") {
             override.parserOptions = {
               ...override.parserOptions,
-              project: tsconfigPath,
+              // project: tsconfigPath,
               tsconfigRootDir: tsconfigPath.replace("tsconfig.json", ""),
             };
           }

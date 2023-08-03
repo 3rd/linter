@@ -1,5 +1,4 @@
 match: react-native
-explore: true
 plugins:
   - eslint-plugin-react-native
   - eslint-plugin-react-native-a11y

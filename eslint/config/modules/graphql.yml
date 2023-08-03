@@ -1,5 +1,4 @@
 match: graphql
-explore: true
 plugins:
   - "@graphql-eslint/eslint-plugin"
 rules:

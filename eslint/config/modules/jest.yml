@@ -1,5 +1,4 @@
 match: jest
-explore: true
 plugins:
   - eslint-plugin-jest
   - eslint-plugin-jest-dom

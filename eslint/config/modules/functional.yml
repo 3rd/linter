@@ -1,10 +1,10 @@
-explore: true
 plugins:
   - eslint-plugin-functional
 rules:
   functional/functional-parameters:
-    - warn
-    - enforceParameterCount: false
+    off
+    # - warn
+    # - enforceParameterCount: false
   functional/immutable-data: off
   functional/no-classes: off
   functional/no-conditional-statements: off

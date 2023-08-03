@@ -1,5 +1,4 @@
 match: node
-explore: true
 plugins:
   - eslint-plugin-node
 rules:

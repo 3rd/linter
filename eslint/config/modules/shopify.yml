@@ -1,10 +1,9 @@
-explore: true
 plugins:
   - "@shopify/eslint-plugin"
 rules:
   # sanity
   "@shopify/binary-assignment-parens": off
-  "@shopify/class-property-semi": error
+  "@shopify/class-property-semi": off
   "@shopify/no-ancestor-directory-import": off # slow
   "@shopify/no-debugger": off
   "@shopify/no-fully-static-classes": error

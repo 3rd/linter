@@ -1,5 +1,5 @@
 match: react-web
-explore: true
+enabled: false
 plugins:
   - eslint-plugin-jsx-a11y
 rules:

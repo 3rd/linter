@@ -1,5 +1,4 @@
-match: next
-explore: true
+match: next_disabled
 plugins:
   - "@next/eslint-plugin-next"
 rules:
@@ -23,3 +22,4 @@ rules:
   "@next/no-sync-scripts": error
   "@next/no-title-in-document-head": error
   "@next/no-typos": error
+  "@next/no-unwanted-polyfillio": error

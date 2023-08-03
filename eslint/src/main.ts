@@ -8,12 +8,9 @@ const projectRoot = process.env.ESLINTER_DIR ?? process.cwd();
 const configPath = path.resolve(LINTER_ROOT, "output", `${Buffer.from(projectRoot).toString("base64")}.json`);
 
 if (require.main === module) {
-  // require("./utils/modulePatch");
-  // const Project = require("./Project").default;
   const project = Project.resolveFromPath(projectRoot);
 
   if (process.env.EXPLORE) {
-    // const { explore } = require("./utils/explore-unconfigured-rules");
     explore(project);
   } else {
     const config = project.getConfig();

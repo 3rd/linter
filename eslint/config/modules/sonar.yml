@@ -1,4 +1,3 @@
-explore: true
 plugins:
   - eslint-plugin-sonarjs
 rules:

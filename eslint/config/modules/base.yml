@@ -1,4 +1,3 @@
-explore: true
 parser: "@babel/eslint-parser"
 parserOptions:
   ecmaVersion: 2020
@@ -13,6 +12,7 @@ env:
   commonjs: true
   node: true
   browser: true
+  jest: true
 ignorePatterns:
   - node_modules
   - dist
@@ -48,7 +48,7 @@ rules:
   no-underscore-dangle: off
   no-undefined: off
   no-undef-init: error
-  no-undef: error
+  no-undef: off
   vars-on-top: off
   one-var-declaration-per-line: off
   one-var: off
@@ -140,7 +140,7 @@ rules:
   no-native-reassign: off # deprecated
   no-multiple-empty-lines: error
   no-multi-str: error
-  no-multi-spaces: error
+  no-multi-spaces: off
   no-multi-assign: error
   no-mixed-spaces-and-tabs: off
   no-mixed-requires: off # deprecated
@@ -225,7 +225,7 @@ rules:
   no-async-promise-executor: error
   guard-for-in: error
   grouped-accessor-pairs: error
-  eol-last: error
+  eol-last: off
   array-callback-return: error
   dot-notation: error
   dot-location: off
@@ -263,7 +263,7 @@ rules:
   #   natural: true
   sort-vars: off
   # style
-  no-trailing-spaces: error
+  no-trailing-spaces: off
   comma-style: off
   comma-spacing: off
   comma-dangle: off
@@ -323,7 +323,7 @@ rules:
   implicit-arrow-linebreak: off # [error, beside]
   wrap-iife: [error, inside]
   quotes: off
-  quote-props: [error, as-needed]
+  quote-props: off # [error, as-needed] # handled by prettier
   wrap-regex: off
   yield-star-spacing: off
   indent: off
