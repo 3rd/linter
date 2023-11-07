@@ -21,5 +21,5 @@ rules:
   functional/prefer-property-signatures: error
   functional/prefer-readonly-type: off
   functional/prefer-tacit: error
-  functional/readonly-type: error
+  functional/readonly-type: off
   functional/type-declaration-immutability: off

@@ -13,7 +13,7 @@ rules:
     - warn
     - validateNested: true
       rule: "^(is|has|was|will|did|can|enable|disable|no|ignore|force|hide|with|disabled)[A-Z]([A-Za-z0-9]?)+|disabled"
-  react/button-has-type: warn
+  react/button-has-type: off
   react/default-props-match-prop-types: error
   react/destructuring-assignment: off
   react/display-name: off

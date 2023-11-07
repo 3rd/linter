@@ -19,7 +19,7 @@ rules:
   unicorn/no-array-callback-reference: off
   unicorn/no-array-for-each: error
   unicorn/no-array-method-this-argument: error
-  unicorn/no-array-push-push: error
+  unicorn/no-array-push-push: off
   unicorn/no-array-reduce: off
   unicorn/no-console-spaces: error
   unicorn/no-document-cookie: warn
@@ -72,7 +72,7 @@ rules:
   unicorn/prefer-object-has-own: off # deprecated
   unicorn/prefer-optional-catch-binding: error
   unicorn/prefer-prototype-methods: error
-  unicorn/prefer-query-selector: error
+  unicorn/prefer-query-selector: off
   unicorn/prefer-reflect-apply: error
   unicorn/prefer-regexp-test: off
   unicorn/prefer-set-has: error
