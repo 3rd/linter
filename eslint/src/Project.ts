@@ -12,6 +12,7 @@ import type { TModuleConfig } from "./Module";
 enum DEPENDENCY_TYPE {
   NORMAL = "NORMAL",
   DEVELOPMENT = "DEVELOPMENT",
+  PEER = "PEER",
 }
 
 interface IProjectDependency {
@@ -93,6 +94,12 @@ class Project {
           name: k,
           version: v ?? "",
           type: DEPENDENCY_TYPE.DEVELOPMENT,
+          path: resolve(root, "node_modules", k),
+        })),
+        ...Object.entries(packageJson.peerDependencies ?? {}).map(([k, v]) => ({
+          name: k,
+          version: v ?? "",
+          type: DEPENDENCY_TYPE.PEER,
           path: resolve(root, "node_modules", k),
         }))
       );
