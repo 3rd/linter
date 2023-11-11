@@ -1,3 +1,4 @@
+# explore: true
 match: react-web
 enabled: false
 plugins:

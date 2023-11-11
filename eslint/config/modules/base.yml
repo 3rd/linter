@@ -1,3 +1,4 @@
+# explore: true
 parser: "@babel/eslint-parser"
 parserOptions:
   ecmaVersion: 2020
@@ -181,7 +182,7 @@ rules:
   no-eval: error
   no-eq-null: error
   no-empty-pattern: error
-  no-empty-function: error
+  no-empty-function: off
   no-empty-character-class: error
   no-empty: off
   no-else-return: error
@@ -210,7 +211,7 @@ rules:
   accessor-pairs: off
   max-classes-per-file: off
   max-statements: off
-  max-params: off
+  max-params: [error, { max: 5 }]
   max-nested-callbacks: off
   max-lines-per-function: off
   init-declarations: off
@@ -244,7 +245,7 @@ rules:
   no-array-constructor: error
   no-alert: off
   no-magic-numbers:
-    - off
+    - error
     - ignore: [-1, 0, 1, 2, 10, 60, 100, 1000, 3000, 1234, 8000, 8080]
   id-length: off
   # - error
@@ -344,11 +345,12 @@ rules:
   callback-return: off # deprecated
   # upcoming
   logical-assignment-operators: off
-  no-constant-binary-expression: off
+  no-constant-binary-expression: error
   no-empty-static-block: error
   no-new-native-nonconstructor: error
-  no-unused-private-class-members: off
-  prefer-object-has-own: off
+  no-unused-private-class-members: error
+  prefer-object-has-own: warn
+  no-object-constructor: error
   # custom
   id-blacklist: off
   id-denylist: off

@@ -1,3 +1,4 @@
+# explore: true
 match: react
 plugins:
   - eslint-plugin-react

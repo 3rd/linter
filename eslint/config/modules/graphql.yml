@@ -1,3 +1,4 @@
+# explore: true
 match: graphql
 plugins:
   - "@graphql-eslint/eslint-plugin"

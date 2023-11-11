@@ -1,3 +1,4 @@
+# explore: true
 match: jest
 plugins:
   - eslint-plugin-jest
@@ -71,6 +72,7 @@ overrides:
       jest/valid-expect-in-promise: error
       jest/valid-expect: error
       jest/valid-title: error
+      jest/no-confusing-set-timeout: error
       # testing-library
       testing-library/await-async-query: error
       testing-library/await-async-utils: error
@@ -100,3 +102,8 @@ overrides:
       testing-library/prefer-user-event: error
       testing-library/prefer-wait-for: error
       testing-library/render-result-naming-convention: error
+      testing-library/await-async-events: error
+      testing-library/await-async-queries: error
+      testing-library/no-await-sync-queries: error
+      testing-library/no-render-in-lifecycle: error
+      testing-library/prefer-implicit-assert: off

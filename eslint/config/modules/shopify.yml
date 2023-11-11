@@ -1,3 +1,4 @@
+# explore: true
 plugins:
   - "@shopify/eslint-plugin"
 rules:

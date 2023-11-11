@@ -1,3 +1,4 @@
+# explore: true
 match: next_disabled
 plugins:
   - "@next/eslint-plugin-next"

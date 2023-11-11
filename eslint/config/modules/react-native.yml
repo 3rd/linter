@@ -1,3 +1,4 @@
+# explore: true
 match: react-native
 plugins:
   - eslint-plugin-react-native

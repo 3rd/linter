@@ -1,3 +1,4 @@
+# explore: true
 match: node
 plugins:
   - eslint-plugin-node

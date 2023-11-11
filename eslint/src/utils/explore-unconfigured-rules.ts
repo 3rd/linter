@@ -7,10 +7,12 @@ const wrap = (text: string) => text.replace(/(?![^\n]{1,64}$)([^\n]{1,64})\s/g, 
 
 const explore = (project: Project) => {
   for (const [_, currentModule] of project.modules.entries()) {
-    const unconfiguredRules = Object.values(Object.fromEntries(currentModule.rules)).filter((rule) => {
-      if (currentModule.name !== "base" && rule.prefix === "") return false;
-      return !rule.isConfigured;
-    });
+    const unconfiguredRules = Object.values(Object.fromEntries(currentModule.rules)).filter(
+      (rule) => {
+        if (currentModule.name !== "base" && rule.prefix === "") return false;
+        return !rule.isConfigured;
+      }
+    );
 
     if (currentModule.config.overrides) {
       for (const override of currentModule.config.overrides) {
