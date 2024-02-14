@@ -1,4 +1,4 @@
-# explore: true
+explore: true
 match: vue
 parser: "vue-eslint-parser"
 parserOptions:
@@ -244,3 +244,14 @@ rules:
   vue/no-multi-spaces: off
   vue/html-comment-content-newline: off
   vue/no-deprecated-dollar-scopedslots-api: off
+  vue/block-order: off
+  vue/enforce-style-attribute: off
+  vue/no-deprecated-model-definition: error
+  vue/no-ref-object-reactivity-loss: error
+  vue/no-restricted-v-on: error
+  vue/no-setup-props-reactivity-loss: error
+  vue/no-unused-emit-declarations: error
+  vue/no-use-v-else-with-v-for: error
+  vue/require-explicit-slots: error
+  vue/require-typed-object-prop: warn
+  vue/v-if-else-key: error

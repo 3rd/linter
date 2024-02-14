@@ -74,12 +74,9 @@ overrides:
       jest/valid-title: error
       jest/no-confusing-set-timeout: error
       # testing-library
-      testing-library/await-async-query: error
       testing-library/await-async-utils: error
-      testing-library/await-fire-event: off
       testing-library/consistent-data-testid: off
       testing-library/no-await-sync-events: off
-      testing-library/no-await-sync-query: error
       testing-library/no-container: error
       testing-library/no-debugging-utils: warn
       testing-library/no-dom-import: error
@@ -87,9 +84,7 @@ overrides:
       testing-library/no-manual-cleanup: error
       testing-library/no-node-access: error
       testing-library/no-promise-in-fire-event: error
-      testing-library/no-render-in-setup: error
       testing-library/no-unnecessary-act: error
-      testing-library/no-wait-for-empty-callback: error
       testing-library/no-wait-for-multiple-assertions: error
       testing-library/no-wait-for-side-effects: error
       testing-library/no-wait-for-snapshot: error
@@ -100,7 +95,6 @@ overrides:
       testing-library/prefer-query-matchers: off
       testing-library/prefer-screen-queries: error
       testing-library/prefer-user-event: error
-      testing-library/prefer-wait-for: error
       testing-library/render-result-naming-convention: error
       testing-library/await-async-events: error
       testing-library/await-async-queries: error

@@ -110,9 +110,9 @@ rules:
   "@typescript-eslint/no-invalid-this": off
   "@typescript-eslint/no-loop-func": error
   "@typescript-eslint/no-loss-of-precision": error
-  "@typescript-eslint/no-magic-numbers":
-    - error
-    - ignore: [-1, 0, 1, 2, 10, 60, 100, 1000, 3000, 1234, 8000, 8080]
+  "@typescript-eslint/no-magic-numbers": off
+  # - error
+  # - ignore: [-1, 0, 1, 2, 10, 60, 100, 1000, 3000, 1234, 8000, 8080]
   "@typescript-eslint/no-redeclare": off # slow
   "@typescript-eslint/no-shadow": error
   "@typescript-eslint/no-unused-expressions": error
@@ -224,8 +224,7 @@ rules:
   # inbox
   "@typescript-eslint/block-spacing": off
   "@typescript-eslint/consistent-generic-constructors": error
-  "@typescript-eslint/consistent-type-exports":
-    [error, { fixMixedExportsWithInlineTypeSpecifier: true }]
+  "@typescript-eslint/consistent-type-exports": [error, { fixMixedExportsWithInlineTypeSpecifier: true }]
   "@typescript-eslint/key-spacing": off
   "@typescript-eslint/lines-around-comment": off
   "@typescript-eslint/no-duplicate-enum-values": error
@@ -240,6 +239,11 @@ rules:
   "@typescript-eslint/sort-type-constituents": error
   "@typescript-eslint/space-before-blocks": off
   "@typescript-eslint/class-methods-use-this": error
+  "@typescript-eslint/prefer-promise-reject-errors": error
+  "@typescript-eslint/prefer-find": error
+  "@typescript-eslint/no-useless-template-literals": off
+  "@typescript-eslint/no-unsafe-unary-minus": error
+  "@typescript-eslint/no-array-delete": error
   # collation
   collation/group-exports: off # broken
   collation/no-default-export: off

@@ -103,7 +103,7 @@ rules:
   no-self-assign: error
   no-script-url: error
   no-return-await: error
-  no-return-assign: error
+  no-return-assign: off
   constructor-super: error
   consistent-this: [error, self]
   consistent-return: off
@@ -216,7 +216,7 @@ rules:
   max-lines-per-function: off
   init-declarations: off
   max-lines: off
-  class-methods-use-this: error
+  class-methods-use-this: off
   no-catch-shadow: off
   no-case-declarations: error
   no-caller: error
