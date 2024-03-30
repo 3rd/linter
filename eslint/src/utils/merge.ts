@@ -5,7 +5,7 @@ import isEqual from "lodash/isEqual";
 const merge = (...objs: unknown[]) => {
   const out: unknown = {};
   for (const obj of objs) {
-    // eslint-disable-next-line consistent-return
+    // eslint-disable-next-line @typescript-eslint/consistent-return
     mergeWith(out, obj, (a: unknown, b: unknown) => {
       if (Array.isArray(a) && Array.isArray(b)) {
         if (a.length === 1 && b.length === 1 && isEqual(a[0], b[0])) return a as unknown[];

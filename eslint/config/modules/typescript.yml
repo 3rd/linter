@@ -81,6 +81,7 @@ rules:
   space-infix-ops: off
   max-params: off
   prefer-destructuring: off
+  consistent-return: off
 
   # debug
 
@@ -244,6 +245,9 @@ rules:
   "@typescript-eslint/no-useless-template-literals": off
   "@typescript-eslint/no-unsafe-unary-minus": error
   "@typescript-eslint/no-array-delete": error
+  "@typescript-eslint/consistent-return": error
+  "@typescript-eslint/only-throw-error": error
+  "@typescript-eslint/use-unknown-in-catch-callback-variable": error
   # collation
   collation/group-exports: off # broken
   collation/no-default-export: off
