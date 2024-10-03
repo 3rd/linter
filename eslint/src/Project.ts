@@ -1,4 +1,4 @@
-import { resolve, parse as parsePath } from "path";
+import { parse as parsePath, resolve } from "path";
 import { existsSync, readFileSync, statSync } from "fs";
 import { packageDirectorySync } from "pkg-dir";
 import type { PackageJson } from "type-fest";
@@ -101,7 +101,7 @@ class Project {
           version: v ?? "",
           type: DEPENDENCY_TYPE.PEER,
           path: resolve(root, "node_modules", k),
-        }))
+        })),
       );
     }
     this.dependencies = dependencies;
@@ -116,7 +116,9 @@ class Project {
         if (!module.enabled) return false;
         if (process.env.EXPLORE) return true;
         if (!module.config.match) return true;
-        for (const matchRule of Array.isArray(module.config.match) ? module.config.match : [module.config.match]) {
+        for (const matchRule of Array.isArray(module.config.match) ?
+          module.config.match
+        : [module.config.match]) {
           if (!this.context[matchRule as string]) return false;
         }
         return true;
@@ -149,7 +151,9 @@ class Project {
   }
 
   getConfig() {
-    let config: IESLintConfig = {};
+    let config: IESLintConfig = {
+      extends: [],
+    };
     for (const module of this.modules) {
       config = merge(config, module.getConfig()) as IESLintConfig;
     }
@@ -185,6 +189,25 @@ class Project {
         }
         config.overrides = overrides;
       }
+    }
+
+    // oxlint
+    config.extends = [
+      ...(Array.isArray(config.extends) ? config.extends : [config.extends!]),
+      "plugin:oxlint/all",
+    ];
+    for (const override of config.overrides ?? []) {
+      const patched: string[] = [];
+      if (typeof override.extends === "string") {
+        patched.push(override.extends);
+      }
+      if (Array.isArray(override.extends)) {
+        for (const extend of override.extends) {
+          patched.push(extend);
+        }
+      }
+      patched.push("plugin:oxlint/all");
+      override.extends = patched;
     }
 
     return config;

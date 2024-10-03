@@ -20,6 +20,7 @@ ignorePatterns:
 plugins:
   - builtin
   - eslint-plugin-prettier
+  - eslint-plugin-oxlint
 extends:
   - prettier
 rules:
@@ -202,7 +203,7 @@ rules:
   no-constant-condition: error
   no-const-assign: error
   no-console: off
-  no-confusing-arrow: error
+  no-confusing-arrow: off
   no-cond-assign: error
   no-compare-neg-zero: error
   no-class-assign: error
@@ -256,7 +257,10 @@ rules:
     - enforceForSwitchCase: true
       enforceForIndexOf: true
   # sorting
-  sort-imports: off
+  sort-imports:
+    - error
+    - ignoreMemberSort: false
+      ignoreDeclarationSort: true
   sort-keys: off
   # - error
   # - asc

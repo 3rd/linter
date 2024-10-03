@@ -137,9 +137,7 @@ rules:
   react-perf/jsx-no-new-function-as-prop: off
   react-perf/jsx-no-new-object-as-prop: off
   # react-refresh
-  react-refresh/only-export-components:
-    - warn
-    - "allowConstantExport": true
+  react-refresh/only-export-components: off
   # react-hooks-addons
   react-hooks-addons/no-unused-deps:
     - warn
