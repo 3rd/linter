@@ -20,7 +20,6 @@ ignorePatterns:
 plugins:
   - builtin
   - eslint-plugin-prettier
-  - eslint-plugin-oxlint
 extends:
   - prettier
 rules:

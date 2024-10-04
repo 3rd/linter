@@ -45,5 +45,3 @@
   prefix: collation
 - name: eslint-plugin-react-hooks-addons
   prefix: react-hooks-addons
-- name: eslint-plugin-oxlint
-  prefix: oxc
