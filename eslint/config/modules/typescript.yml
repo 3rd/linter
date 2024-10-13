@@ -196,6 +196,7 @@ rules:
         string: true
         number: true
         bigint: true
+        boolean: true
   "@typescript-eslint/prefer-optional-chain": off # slow
   "@typescript-eslint/prefer-readonly": off
   "@typescript-eslint/prefer-readonly-parameter-types": off
