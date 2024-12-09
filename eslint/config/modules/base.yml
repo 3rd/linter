@@ -256,10 +256,7 @@ rules:
     - enforceForSwitchCase: true
       enforceForIndexOf: true
   # sorting
-  sort-imports:
-    - error
-    - ignoreMemberSort: false
-      ignoreDeclarationSort: true
+  sort-imports: off
   sort-keys: off
   # - error
   # - asc

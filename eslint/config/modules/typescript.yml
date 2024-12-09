@@ -60,7 +60,7 @@ rules:
   no-implied-eval: off
   no-invalid-this: off
   no-loop-func: off
-  no-loss-of-precision: off
+  no-loss-of-precision: error
   no-magic-numbers: off
   no-shadow: off
   no-throw-literal: off
@@ -110,7 +110,6 @@ rules:
   "@typescript-eslint/no-implied-eval": error
   "@typescript-eslint/no-invalid-this": off
   "@typescript-eslint/no-loop-func": error
-  "@typescript-eslint/no-loss-of-precision": error
   "@typescript-eslint/no-magic-numbers": off
   # - error
   # - ignore: [-1, 0, 1, 2, 10, 60, 100, 1000, 3000, 1234, 8000, 8080]
@@ -148,9 +147,7 @@ rules:
   "@typescript-eslint/explicit-module-boundary-types": off
   "@typescript-eslint/no-base-to-string": off # slow
   "@typescript-eslint/no-confusing-non-null-assertion": error
-  "@typescript-eslint/no-confusing-void-expression": off #slow
   "@typescript-eslint/no-dynamic-delete": error
-  "@typescript-eslint/no-empty-interface": error
   "@typescript-eslint/no-explicit-any": error
   "@typescript-eslint/no-extra-non-null-assertion": error
   "@typescript-eslint/no-extraneous-class": error
@@ -211,7 +208,6 @@ rules:
   "@typescript-eslint/restrict-template-expressions": off # slow
   "@typescript-eslint/strict-boolean-expressions": off
   "@typescript-eslint/switch-exhaustiveness-check": off
-  "@typescript-eslint/unbound-method": off
   # style
   "@typescript-eslint/member-delimiter-style": off
   "@typescript-eslint/member-ordering": off
@@ -238,7 +234,6 @@ rules:
   "@typescript-eslint/no-unsafe-enum-comparison": off
   "@typescript-eslint/no-useless-empty-export": error
   "@typescript-eslint/parameter-properties": error
-  "@typescript-eslint/sort-type-constituents": error
   "@typescript-eslint/space-before-blocks": off
   "@typescript-eslint/class-methods-use-this": error
   "@typescript-eslint/prefer-promise-reject-errors": error
@@ -246,9 +241,12 @@ rules:
   "@typescript-eslint/no-useless-template-literals": off
   "@typescript-eslint/no-unsafe-unary-minus": error
   "@typescript-eslint/no-array-delete": error
-  "@typescript-eslint/consistent-return": error
+  "@typescript-eslint/consistent-return": [off, { treatUndefinedAsUnspecified: false }]
   "@typescript-eslint/only-throw-error": error
   "@typescript-eslint/use-unknown-in-catch-callback-variable": error
+  # slow
+  "@typescript-eslint/unbound-method": off
+  "@typescript-eslint/no-confusing-void-expression": off #slow
   # collation
   collation/group-exports: off # broken
   collation/no-default-export: off

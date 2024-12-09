@@ -1,0 +1,136 @@
+# explore: true
+plugins:
+  - "eslint-plugin-perfectionist"
+rules:
+  perfectionist/sort-imports:
+    - error
+    - type: natural
+      order: asc
+      internalPattern:
+        - "^~/.*"
+        - "^@/.*"
+      partitionByComment: true
+      partitionByNewLine: false
+      newlinesBetween: ignore
+      groups:
+        - react
+        - storybookReact
+        - storybook
+        - testing
+        - framework
+        - uiLib
+        - uiLibExtra
+        - - builtin
+          - external
+        - type
+        - schemas
+        - stores
+        - api
+        - hooks
+        - internal-type
+        - internal
+        - components
+        - - parent-type
+          - sibling-type
+          - index-type
+        - - parent
+          - sibling
+          - index
+        - object
+        - unknown
+      customGroups:
+        value:
+          react:
+            - "^react$"
+          framework:
+            - "^next$"
+          uiLib:
+            - "^@headlessui/react"
+            - "^@mantine/.+"
+            - "^@mui/material/.+"
+            - "^@next/.+"
+            - "^@radix-ui/.+"
+          uiLibExtra:
+            - "^@mui/icons-material/.+"
+            - "^@mui/.+"
+          schemas:
+            - "^@/schemas$"
+            - "^@/schemas/.+"
+          stores:
+            - "^@/stores$"
+            - "^@/stores/.+"
+          api:
+            - "^@/api$"
+            - "^@/api/.+"
+          hooks:
+            - "^@/hooks$"
+            - "^@/hooks/.+"
+          components:
+            - "^@/components$"
+            - "^@/components/.+"
+          testing:
+            - "^@/testing"
+            - "^@/testing/*"
+            - "^@/utils/testing"
+          storybookReact:
+            - "^@storybook/react"
+          storybook:
+            - "^@storybook/.+"
+        type:
+          react:
+            - "^react$"
+          framework:
+            - "^next$"
+          uiLib:
+            - "^@headlessui/react"
+            - "^@mantine/.+"
+            - "^@mui/material/.+"
+            - "^@next/.+"
+            - "^@radix-ui/.+"
+          uiLibExtra:
+            - "^@mui/icons-material/.+"
+            - "^@mui/.+"
+          schemas:
+            - "^@/schemas$"
+            - "^@/schemas/.+"
+          stores:
+            - "^@/stores$"
+            - "^@/stores/.+"
+          api:
+            - "^@/api$"
+            - "^@/api/.+"
+          hooks:
+            - "^@/hooks$"
+            - "^@/hooks/.+"
+          components:
+            - "^@/components$"
+            - "^@/components/.+"
+          testing:
+            - "^@/testing"
+            - "^@/testing/*"
+            - "^@/utils/testing"
+          storybookReact:
+            - "^@storybook/react"
+          storybook:
+            - "^@storybook/.+"
+  perfectionist/sort-array-includes: error
+  perfectionist/sort-enums: error
+  perfectionist/sort-heritage-clauses: error
+  perfectionist/sort-intersection-types:
+    - error
+    - groups:
+        - named
+        - - intersection
+          - union
+        - unknown
+  perfectionist/sort-named-exports: error
+  perfectionist/sort-named-imports: error
+  perfectionist/sort-sets: error
+  perfectionist/sort-union-types:
+    - error
+    - groups:
+        - named
+        - - intersection
+          - union
+        - unknown
+        - nullish
