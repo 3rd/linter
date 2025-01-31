@@ -65,7 +65,7 @@ rules:
   require-yield: error
   require-unicode-regexp: off
   require-await: off
-  require-atomic-updates: error
+  require-atomic-updates: off
   radix:
     - error
     - as-needed

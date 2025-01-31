@@ -101,7 +101,7 @@ class Project {
           version: v ?? "",
           type: DEPENDENCY_TYPE.PEER,
           path: resolve(root, "node_modules", k),
-        }))
+        })),
       );
     }
     this.dependencies = dependencies;
@@ -116,7 +116,9 @@ class Project {
         if (!module.enabled) return false;
         if (process.env.EXPLORE) return true;
         if (!module.config.match) return true;
-        for (const matchRule of Array.isArray(module.config.match) ? module.config.match : [module.config.match]) {
+        for (const matchRule of Array.isArray(module.config.match) ?
+          module.config.match
+        : [module.config.match]) {
           if (!this.context[matchRule as string]) return false;
         }
         return true;

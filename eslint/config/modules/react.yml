@@ -5,7 +5,6 @@ plugins:
   - eslint-plugin-react-hooks
   - eslint-plugin-react-perf
   - eslint-plugin-react-refresh
-  - eslint-plugin-react-hooks-addons
 settings:
   react:
     version: detect
@@ -14,7 +13,7 @@ rules:
   react/boolean-prop-naming:
     - warn
     - validateNested: true
-      rule: "^(is|has|was|will|did|can|enable|disable|no|ignore|force|hide|with|disabled)[A-Z]([A-Za-z0-9]?)+|disabled"
+      rule: "^(is|has|was|will|did|can|enable|disable|no|ignore|force|hide|with|disabled|allow|default|initial)[A-Z]([A-Za-z0-9]?)+|disabled"
   react/button-has-type: off
   react/default-props-match-prop-types: error
   react/destructuring-assignment: off
@@ -52,7 +51,7 @@ rules:
   react/jsx-no-leaked-render: off
   react/jsx-no-literals: off
   react/jsx-no-script-url: error
-  react/jsx-no-target-blank: error
+  react/jsx-no-target-blank: off
   react/jsx-no-undef: error
   react/jsx-no-useless-fragment: off
   react/jsx-one-expression-per-line: off
@@ -62,13 +61,13 @@ rules:
   react/sort-prop-types:
     - error
     - callbacksLast: true
-      noSortAlphabetically: false
+      noSortAlphabetically: true
       sortShapeProp: true
   react/jsx-sort-props:
     - error
     - callbacksLast: true
       multiline: ignore
-      noSortAlphabetically: false
+      noSortAlphabetically: true
       reservedFirst: true
       shorthandFirst: false
       shorthandLast: true
@@ -138,8 +137,3 @@ rules:
   react-perf/jsx-no-new-object-as-prop: off
   # react-refresh
   react-refresh/only-export-components: off
-  # react-hooks-addons
-  react-hooks-addons/no-unused-deps:
-    - warn
-    - additionalHooks:
-        pattern: use[A-Z].*

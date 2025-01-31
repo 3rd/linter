@@ -47,7 +47,7 @@ rules:
           uiLib:
             - "^@headlessui/react"
             - "^@mantine/.+"
-            - "^@mui/material/.+"
+            - "^@mui/material"
             - "^@next/.+"
             - "^@radix-ui/.+"
           uiLibExtra:

@@ -14,6 +14,6 @@ rules:
   security/detect-buffer-noassert: warn
   security/detect-child-process: warn
   security/detect-disable-mustache-escape: warn
-  security/detect-object-injection: warn
+  security/detect-object-injection: off
   security/detect-new-buffer: warn
   security/detect-bidi-characters: warn

@@ -251,6 +251,6 @@ rules:
   collation/group-exports: off # broken
   collation/no-default-export: off
   collation/no-inline-export: off
-  collation/sort-dependency-list: warn # react
-  collation/sort-exports: warn
+  collation/sort-dependency-list: off # react
+  collation/sort-exports: off
   collation/prefer-import: off
