@@ -1,17 +1,17 @@
-import { resolve, parse as parsePath } from "path";
+import { findUpSync } from "find-up";
 import { existsSync, readFileSync, statSync } from "fs";
+import { parse as parsePath, resolve } from "path";
 import { packageDirectorySync } from "pkg-dir";
 import type { PackageJson } from "type-fest";
-import { findUpSync } from "find-up";
-import { LINTER_CONFIG_DIR } from "./env";
-import { getFilesDeep, merge, readYAML } from "./utils";
-import { Module } from "./Module";
 import type { IESLintConfig } from "./eslint/eslint-types";
 import type { TModuleConfig } from "./Module";
+import { LINTER_CONFIG_DIR } from "./env";
+import { Module } from "./Module";
+import { getFilesDeep, merge, readYAML } from "./utils";
 
 enum DEPENDENCY_TYPE {
-  NORMAL = "NORMAL",
   DEVELOPMENT = "DEVELOPMENT",
+  NORMAL = "NORMAL",
   PEER = "PEER",
 }
 
@@ -70,6 +70,7 @@ class Project {
       svelte: this.hasDependency("svelte"),
       typescript: this.hasPath("tsconfig.json") || this.hasDependency("typescript"),
       vue: this.hasDependency("vue"),
+      astro: this.hasDependency("astro"),
     };
   }
 
@@ -170,6 +171,16 @@ class Project {
         }
       }
     } catch {}
+
+    if (this.hasFile("tsconfig.app.json")) {
+      const overrides = config.overrides ?? [];
+      for (const override of overrides) {
+        if (override.parserOptions?.project) {
+          override.parserOptions.project = "tsconfig.app.json";
+        }
+      }
+      config.overrides = overrides;
+    }
 
     // parserOptions.project - handle tsconfig.json in upper project
     if (this.context.typescript && !this.hasFile("tsconfig.json")) {

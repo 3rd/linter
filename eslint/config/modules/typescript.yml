@@ -86,27 +86,18 @@ rules:
   # debug
 
   # builtin extensions
-  "@typescript-eslint/brace-style": off
-  "@typescript-eslint/comma-dangle": off
-  "@typescript-eslint/comma-spacing": off
   "@typescript-eslint/default-param-last": error
   "@typescript-eslint/dot-notation": off
-  "@typescript-eslint/func-call-spacing": off
-  "@typescript-eslint/indent": off
   "@typescript-eslint/init-declarations": off
-  "@typescript-eslint/keyword-spacing": off
-  "@typescript-eslint/lines-between-class-members": off
   "@typescript-eslint/no-array-constructor": error
   "@typescript-eslint/no-dupe-class-members": error
   "@typescript-eslint/no-empty-function": off
-  "@typescript-eslint/no-extra-parens": off
   # - error
   # - all
   # - enforceForArrowConditionals: false
   #   enforceForSequenceExpressions: false
   #   ignoreJSX: all
   #   nestedBinaryExpressions: false
-  "@typescript-eslint/no-extra-semi": error
   "@typescript-eslint/no-implied-eval": error
   "@typescript-eslint/no-invalid-this": off
   "@typescript-eslint/no-loop-func": error
@@ -119,13 +110,8 @@ rules:
   "@typescript-eslint/no-unused-vars": off # ts
   "@typescript-eslint/no-use-before-define": error
   "@typescript-eslint/no-useless-constructor": error
-  "@typescript-eslint/object-curly-spacing": off
-  "@typescript-eslint/quotes": off
   "@typescript-eslint/require-await": off
   "@typescript-eslint/return-await": error
-  "@typescript-eslint/semi": off
-  "@typescript-eslint/space-before-function-paren": off
-  "@typescript-eslint/space-infix-ops": off
   "@typescript-eslint/max-params": [error, { max: 5 }]
   "@typescript-eslint/prefer-destructuring":
     - error
@@ -136,7 +122,6 @@ rules:
   "@typescript-eslint/await-thenable": error
   "@typescript-eslint/ban-ts-comment": off
   "@typescript-eslint/ban-tslint-comment": off
-  "@typescript-eslint/ban-types": off
   "@typescript-eslint/class-literal-property-style": off
   "@typescript-eslint/consistent-indexed-object-style": error
   "@typescript-eslint/consistent-type-assertions": error
@@ -165,7 +150,6 @@ rules:
   "@typescript-eslint/no-require-imports": off
   "@typescript-eslint/no-restricted-imports": error
   "@typescript-eslint/no-this-alias": off
-  "@typescript-eslint/no-throw-literal": error
   "@typescript-eslint/no-type-alias": off
   "@typescript-eslint/no-unnecessary-boolean-literal-compare": error
   "@typescript-eslint/no-unnecessary-condition": off # slow
@@ -209,22 +193,16 @@ rules:
   "@typescript-eslint/strict-boolean-expressions": off
   "@typescript-eslint/switch-exhaustiveness-check": off
   # style
-  "@typescript-eslint/member-delimiter-style": off
   "@typescript-eslint/member-ordering": off
   "@typescript-eslint/method-signature-style": off
   "@typescript-eslint/naming-convention": off
-  "@typescript-eslint/padding-line-between-statements": off
-  "@typescript-eslint/type-annotation-spacing": off
   # typings
   "@typescript-eslint/triple-slash-reference": off
   "@typescript-eslint/typedef": off
   "@typescript-eslint/unified-signatures": error
   # inbox
-  "@typescript-eslint/block-spacing": off
   "@typescript-eslint/consistent-generic-constructors": error
   "@typescript-eslint/consistent-type-exports": [error, { fixMixedExportsWithInlineTypeSpecifier: true }]
-  "@typescript-eslint/key-spacing": off
-  "@typescript-eslint/lines-around-comment": off
   "@typescript-eslint/no-duplicate-enum-values": error
   "@typescript-eslint/no-duplicate-type-constituents": error
   "@typescript-eslint/no-import-type-side-effects": error
@@ -234,11 +212,9 @@ rules:
   "@typescript-eslint/no-unsafe-enum-comparison": off
   "@typescript-eslint/no-useless-empty-export": error
   "@typescript-eslint/parameter-properties": error
-  "@typescript-eslint/space-before-blocks": off
   "@typescript-eslint/class-methods-use-this": error
   "@typescript-eslint/prefer-promise-reject-errors": error
   "@typescript-eslint/prefer-find": error
-  "@typescript-eslint/no-useless-template-literals": off
   "@typescript-eslint/no-unsafe-unary-minus": error
   "@typescript-eslint/no-array-delete": error
   "@typescript-eslint/consistent-return": [off, { treatUndefinedAsUnspecified: false }]

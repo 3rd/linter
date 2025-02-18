@@ -1,6 +1,6 @@
+import isEqual from "lodash/isEqual";
 import mergeWith from "lodash/mergeWith";
 import unionWith from "lodash/unionWith";
-import isEqual from "lodash/isEqual";
 
 const merge = (...objs: unknown[]) => {
   const out: unknown = {};

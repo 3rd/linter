@@ -1,7 +1,7 @@
 import { omit } from "lodash";
+import type { IESLintConfig, TESLintConfigRuleValue } from "./eslint/eslint-types";
 import { plugins as eslintPlugins } from "./eslint/plugins";
 import { Rule } from "./Rule";
-import type { IESLintConfig, TESLintConfigRuleValue } from "./eslint/eslint-types";
 
 type TModuleConfig = IESLintConfig & {
   match?: Record<string, boolean>;
@@ -59,7 +59,7 @@ class Module {
           acc[key] = rule.config;
           return acc;
         },
-        {}
+        {},
       ),
     } as IESLintConfig;
   }

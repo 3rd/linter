@@ -1,7 +1,7 @@
-import path from "path";
 import fs from "fs";
-import { Project } from "./Project";
+import path from "path";
 import { LINTER_ROOT } from "./env";
+import { Project } from "./Project";
 import { explore } from "./utils/explore-unconfigured-rules";
 
 const projectRoot = process.env.ESLINTER_DIR ?? process.cwd();
