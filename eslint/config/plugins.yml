@@ -13,6 +13,8 @@
   prefix: react-perf
 - name: eslint-plugin-react-hooks
   prefix: react-hooks
+- name: eslint-plugin-react-compiler
+  prefix: react-compiler
 - name: eslint-plugin-unicorn
   prefix: unicorn
 - name: eslint-plugin-prettier

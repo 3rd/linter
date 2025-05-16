@@ -19,7 +19,7 @@
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
     "eslint-config-prettier": "^9.1.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@babel/core": "^7.24.3",
@@ -40,7 +40,8 @@
     "eslint-plugin-perfectionist": "^4.2.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "6.0.0-rc.1",
     "eslint-plugin-react-native": "^4.1.0",
     "eslint-plugin-react-native-a11y": "^3.3.0",
     "eslint-plugin-react-perf": "^3.3.3",

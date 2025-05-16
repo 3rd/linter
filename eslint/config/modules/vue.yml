@@ -1,4 +1,4 @@
-explore: true
+explore: false
 match: vue
 parser: "vue-eslint-parser"
 parserOptions:

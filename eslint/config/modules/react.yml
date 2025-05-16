@@ -1,10 +1,11 @@
-# explore: true
+explore: true
 match: react
 plugins:
   - eslint-plugin-react
   - eslint-plugin-react-hooks
   - eslint-plugin-react-perf
   - eslint-plugin-react-refresh
+  - eslint-plugin-react-compiler
 settings:
   react:
     version: detect
@@ -130,6 +131,10 @@ rules:
   # react-hooks
   react-hooks/exhaustive-deps: warn
   react-hooks/rules-of-hooks: error
+  react-hooks/react-compiler: error
+  react/jsx-props-no-spread-multi: error
+  react/forward-ref-uses-ref: error
+  react/checked-requires-onchange-or-readonly: error
   # react-perf
   react-perf/jsx-no-jsx-as-prop: off
   react-perf/jsx-no-new-array-as-prop: off
@@ -137,3 +142,5 @@ rules:
   react-perf/jsx-no-new-object-as-prop: off
   # react-refresh
   react-refresh/only-export-components: off
+  # react-compiler
+  react-compiler/react-compiler: error
