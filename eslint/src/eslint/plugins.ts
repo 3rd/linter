@@ -1,12 +1,12 @@
 import { resolve } from "path";
+import type { IESLintPlugin } from "./eslint-types";
 import { LINTER_CONFIG_DIR } from "../env";
 import { Rule } from "../Rule";
 import { readYAML } from "../utils";
 import { getBuiltinRulesPlugin } from "./eslint-builtin";
-import type { IESLintPlugin } from "./eslint-types";
 
 const plugins = (
-  readYAML(resolve(LINTER_CONFIG_DIR, "plugins.yml")) as (string | { name: string; prefix: string })[]
+  readYAML(resolve(LINTER_CONFIG_DIR, "plugins.yml")) as ({ name: string; prefix: string } | string)[]
 ).reduce<Record<string, { name: string; prefix: string; rules: Rule[] }>>((acc, curr) => {
   const plugin = {
     name: "",

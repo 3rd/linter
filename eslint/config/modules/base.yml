@@ -222,7 +222,7 @@ rules:
   no-caller: error
   no-buffer-constructor: off
   no-bitwise: warn
-  no-await-in-loop: error
+  no-await-in-loop: off
   no-async-promise-executor: error
   guard-for-in: error
   grouped-accessor-pairs: error

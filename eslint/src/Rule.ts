@@ -1,5 +1,5 @@
-import { ESLINT_PLUGIN_RULE_TYPE } from "./eslint/eslint-types";
 import type { IESLintPluginRule, TESLintConfigRuleValue } from "./eslint/eslint-types";
+import { ESLINT_PLUGIN_RULE_TYPE } from "./eslint/eslint-types";
 
 class Rule {
   name: string;

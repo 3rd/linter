@@ -172,7 +172,7 @@ rules:
   "@typescript-eslint/prefer-literal-enum-member": error
   "@typescript-eslint/prefer-namespace-keyword": off
   "@typescript-eslint/prefer-nullish-coalescing":
-    - error
+    - off
     - ignorePrimitives:
         string: true
         number: true
@@ -212,7 +212,7 @@ rules:
   "@typescript-eslint/no-unsafe-enum-comparison": off
   "@typescript-eslint/no-useless-empty-export": error
   "@typescript-eslint/parameter-properties": error
-  "@typescript-eslint/class-methods-use-this": error
+  "@typescript-eslint/class-methods-use-this": off
   "@typescript-eslint/prefer-promise-reject-errors": error
   "@typescript-eslint/prefer-find": error
   "@typescript-eslint/no-unsafe-unary-minus": error

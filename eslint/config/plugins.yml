@@ -39,8 +39,6 @@
   prefix: node
 - name: eslint-plugin-security
   prefix: security
-- name: "@graphql-eslint/eslint-plugin" # FIXME
-  prefix: "graphql"
 - name: "@next/eslint-plugin-next"
   prefix: "@next"
 - name: eslint-plugin-collation

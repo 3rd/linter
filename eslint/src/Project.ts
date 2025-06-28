@@ -62,7 +62,6 @@ class Project {
       "react-native": this.hasDependency("react-native"),
       "react-web": this.hasDependency("react") && !this.hasDependency("react-native"),
       browser: !this.packageJson.engines?.node,
-      graphql: this.hasDependency("graphql"),
       jest: this.hasDependency("jest"),
       next: this.hasDependency("next"),
       node: Boolean(this.packageJson.engines?.node),
@@ -184,15 +183,17 @@ class Project {
 
     // parserOptions.project - handle tsconfig.json in upper project
     if (this.context.typescript && !this.hasFile("tsconfig.json")) {
-      const tsconfigPath = findUpSync("tsconfig.json");
+      const tsconfigPath = findUpSync("tsconfig.app.json") ?? findUpSync("tsconfig.json");
+      const tsconfigFile = tsconfigPath?.split("/").pop() ?? null;
+
       if (tsconfigPath) {
         const overrides = config.overrides ?? [];
         for (const override of overrides) {
           if (override.parserOptions?.project === "tsconfig.json") {
             override.parserOptions = {
               ...override.parserOptions,
-              // project: tsconfigPath,
               tsconfigRootDir: tsconfigPath.replace("tsconfig.json", ""),
+              ...(!tsconfigFile || tsconfigFile === "tsconfig.json" ? {} : { project: tsconfigFile }),
             };
           }
         }

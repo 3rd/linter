@@ -2,9 +2,9 @@
 import type { JSONSchema7 } from "json-schema";
 
 enum ESLINT_PLUGIN_RULE_TYPE {
+  LAYOUT = "layout",
   PROBLEM = "problem",
   SUGGESTION = "suggestion",
-  LAYOUT = "layout",
 }
 
 interface IESLintPluginRule {
@@ -30,10 +30,10 @@ interface IESLintPlugin {
 type TESLintConfigEnvValue =
   | "browser"
   | "commonjs"
-  | "es6"
   | "es2017"
   | "es2020"
   | "es2021"
+  | "es6"
   | "jest"
   | "node"
   | "serviceworker"
@@ -43,15 +43,15 @@ type TESLintConfigRuleValue =
   | "error"
   | "off"
   | "warn"
+  | ["error" | "off" | "warn" | 0 | 1 | 2, ...unknown[]]
   | 0
   | 1
-  | 2
-  | ["error" | "off" | "warn" | 0 | 1 | 2, ...unknown[]];
+  | 2;
 interface IESLintConfig {
   root?: boolean;
   parser?: string;
   parserOptions?: {
-    ecmaVersion?: number | "latest";
+    ecmaVersion?: "latest" | number;
     sourceType?: "module" | "script";
     ecmaFeatures?: {
       globalReturn?: boolean;
