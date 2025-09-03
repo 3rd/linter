@@ -100,7 +100,9 @@ rules:
   react/no-string-refs: error
   react/no-this-in-sfc: error
   react/no-typos: error
-  react/no-unescaped-entities: error
+  react/no-unescaped-entities:
+    - error
+    - forbid: [{ char: ">", alternatives: ["&gt;"] }, { char: "}", alternatives: ["&#125;"] }]
   react/no-unknown-property: error
   react/no-unsafe: error
   react/no-unstable-nested-components: error

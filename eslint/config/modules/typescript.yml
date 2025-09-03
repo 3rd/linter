@@ -212,7 +212,7 @@ rules:
   "@typescript-eslint/no-unsafe-enum-comparison": off
   "@typescript-eslint/no-useless-empty-export": error
   "@typescript-eslint/parameter-properties": error
-  "@typescript-eslint/class-methods-use-this": off
+  "@typescript-eslint/class-methods-use-this": error
   "@typescript-eslint/prefer-promise-reject-errors": error
   "@typescript-eslint/prefer-find": error
   "@typescript-eslint/no-unsafe-unary-minus": error

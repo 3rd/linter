@@ -118,7 +118,7 @@ class Project {
         if (!module.config.match) return true;
         for (const matchRule of Array.isArray(module.config.match) ?
           module.config.match
-        : [module.config.match]) {
+          : [module.config.match]) {
           if (!this.context[matchRule as string]) return false;
         }
         return true;
@@ -169,7 +169,7 @@ class Project {
           }
         }
       }
-    } catch {}
+    } catch { }
 
     if (this.hasFile("tsconfig.app.json")) {
       const overrides = config.overrides ?? [];
