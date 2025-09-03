@@ -135,7 +135,7 @@ rules:
   no-new-object: error
   no-new-func: error
   no-new: error
-  no-nested-ternary: warn
+  no-nested-ternary: off
   no-negated-in-lhs: off
   no-negated-condition: error
   no-native-reassign: off # deprecated
