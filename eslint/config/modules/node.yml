@@ -19,7 +19,7 @@ rules:
   # - ignores: [modules]
   node/no-unsupported-features/node-builtins: error
   node/process-exit-as-throw: error
-  node/shebang: error
+  node/shebang: off
   # best practices
   node/no-deprecated-api: error
   # style

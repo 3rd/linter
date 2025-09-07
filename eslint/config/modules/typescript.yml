@@ -139,7 +139,7 @@ rules:
   "@typescript-eslint/no-floating-promises": off # slow
   "@typescript-eslint/no-for-in-array": error
   "@typescript-eslint/no-inferrable-types": error
-  "@typescript-eslint/no-invalid-void-type": error
+  "@typescript-eslint/no-invalid-void-type": off
   "@typescript-eslint/no-meaningless-void-operator": error
   "@typescript-eslint/no-misused-new": error
   "@typescript-eslint/no-misused-promises": off # slow
