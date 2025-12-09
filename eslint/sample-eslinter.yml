@@ -1,0 +1,4 @@
+rules:
+  example-rule-off: off
+  example-rule-warn: warn
+  example-rule-error: error

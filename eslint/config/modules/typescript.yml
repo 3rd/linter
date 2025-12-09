@@ -107,7 +107,7 @@ rules:
   "@typescript-eslint/no-redeclare": off # slow
   "@typescript-eslint/no-shadow": error
   "@typescript-eslint/no-unused-expressions": error
-  "@typescript-eslint/no-unused-vars": off # ts
+  "@typescript-eslint/no-unused-vars": error
   "@typescript-eslint/no-use-before-define": error
   "@typescript-eslint/no-useless-constructor": error
   "@typescript-eslint/require-await": off
