@@ -107,7 +107,15 @@ rules:
   "@typescript-eslint/no-redeclare": off # slow
   "@typescript-eslint/no-shadow": error
   "@typescript-eslint/no-unused-expressions": error
-  "@typescript-eslint/no-unused-vars": error
+  "@typescript-eslint/no-unused-vars":
+    - error
+    - args: all
+      argsIgnorePattern: ^_
+      caughtErrors: all
+      caughtErrorsIgnorePattern: ^_
+      destructuredArrayIgnorePattern: ^_
+      varsIgnorePattern: ^_
+      ignoreRestSiblings: true
   "@typescript-eslint/no-use-before-define": error
   "@typescript-eslint/no-useless-constructor": error
   "@typescript-eslint/require-await": off
