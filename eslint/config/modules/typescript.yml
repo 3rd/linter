@@ -5,10 +5,16 @@ plugins:
   - "@typescript-eslint/eslint-plugin"
   - eslint-plugin-collation
 overrides:
-  - files: ["*.ts", "*.tsx", "*.js"]
+  - files: ["*.ts", "*.tsx"]
     parser: "@typescript-eslint/parser"
     parserOptions:
       project: true
+  - files: ["*.js"]
+    parser: "@typescript-eslint/parser"
+    parserOptions:
+      project: true
+      # Keep JavaScript lintable through the watch host when tsconfig omits allowJs.
+      projectService: false
   - files: ["*.ts", "*.tsx"]
     rules:
       constructor-super: off # ts(2335) & ts(2377)
@@ -70,7 +76,6 @@ rules:
   no-useless-constructor: off
   no-var: error # ts transpiles let/const to var, so no need for vars any more
   object-curly-spacing: off
-  prefer-const: error # ts provides better types with const
   prefer-rest-params: error # ts provides better types with rest args over arguments
   prefer-spread: error # ts transpiles spread to apply, so no need for manual apply
   quotes: off
@@ -116,7 +121,7 @@ rules:
       destructuredArrayIgnorePattern: ^_
       varsIgnorePattern: ^_
       ignoreRestSiblings: true
-  "@typescript-eslint/no-use-before-define": error
+  "@typescript-eslint/no-use-before-define": [error, { functions: false, variables: false, classes: true }]
   "@typescript-eslint/no-useless-constructor": error
   "@typescript-eslint/require-await": off
   "@typescript-eslint/return-await": error
@@ -140,7 +145,7 @@ rules:
   "@typescript-eslint/explicit-module-boundary-types": off
   "@typescript-eslint/no-base-to-string": off # slow
   "@typescript-eslint/no-confusing-non-null-assertion": error
-  "@typescript-eslint/no-dynamic-delete": error
+  "@typescript-eslint/no-dynamic-delete": off
   "@typescript-eslint/no-explicit-any": error
   "@typescript-eslint/no-extra-non-null-assertion": error
   "@typescript-eslint/no-extraneous-class": error
@@ -220,13 +225,23 @@ rules:
   "@typescript-eslint/no-unsafe-enum-comparison": off
   "@typescript-eslint/no-useless-empty-export": error
   "@typescript-eslint/parameter-properties": error
-  "@typescript-eslint/class-methods-use-this": error
-  "@typescript-eslint/prefer-promise-reject-errors": error
+  "@typescript-eslint/class-methods-use-this":
+    - error
+    - ignoreOverrideMethods: true
+      ignoreClassesThatImplementAnInterface: public-fields
+  "@typescript-eslint/prefer-promise-reject-errors":
+    - error
+    - allowThrowingAny: false
+      allowThrowingUnknown: true
   "@typescript-eslint/prefer-find": error
   "@typescript-eslint/no-unsafe-unary-minus": error
   "@typescript-eslint/no-array-delete": error
   "@typescript-eslint/consistent-return": [off, { treatUndefinedAsUnspecified: false }]
-  "@typescript-eslint/only-throw-error": error
+  "@typescript-eslint/only-throw-error":
+    - error
+    - allowRethrowing: true
+      allowThrowingAny: false
+      allowThrowingUnknown: true
   "@typescript-eslint/use-unknown-in-catch-callback-variable": error
   # slow
   "@typescript-eslint/unbound-method": off

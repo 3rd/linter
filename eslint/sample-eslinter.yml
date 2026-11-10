@@ -2,3 +2,8 @@ rules:
   example-rule-off: off
   example-rule-warn: warn
   example-rule-error: error
+overrides:
+  - files: ["src/execution/worker.ts"]
+    rules:
+      no-new-func: off
+      "@typescript-eslint/no-implied-eval": off

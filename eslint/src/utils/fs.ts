@@ -1,38 +1,22 @@
 import { readdirSync } from "fs";
 import { resolve } from "path";
 
-type TLSEntry = {
-  name: string;
-  path: string;
-};
-
 const getFilesDeep = (path: string) => {
-  const entries = readdirSync(path, { withFileTypes: true }).reduce<{ dirs: TLSEntry[]; files: TLSEntry[] }>(
-    (acc, curr) => {
-      if (curr.isDirectory()) {
-        acc.dirs.push({
-          name: curr.name,
-          path: resolve(path, curr.name),
-        });
-      }
-      if (curr.isFile()) {
-        acc.files.push({
-          name: curr.name,
-          path: resolve(path, curr.name),
-        });
-      }
-      return acc;
-    },
-    {
-      dirs: [],
-      files: [],
-    }
-  );
-
   const files: string[] = [];
-  files.push(...entries.files.map((entry) => entry.path));
-  for (const directory of entries.dirs) {
-    files.push(...getFilesDeep(directory.path));
+  const directories: string[] = [];
+
+  for (const entry of readdirSync(path, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      directories.push(resolve(path, entry.name));
+    }
+
+    if (!entry.isFile()) continue;
+
+    files.push(resolve(path, entry.name));
+  }
+
+  for (const directory of directories) {
+    files.push(...getFilesDeep(directory));
   }
 
   return files;

@@ -10,7 +10,11 @@ class Rule {
 
   constructor(name: string, source?: IESLintPluginRule | null, prefix = "") {
     this.name = name;
-    if (source) this.source = source;
+
+    if (source) {
+      this.source = source;
+    }
+
     this.prefix = prefix === "builtin" ? "" : prefix;
   }
 

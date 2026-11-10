@@ -7,7 +7,7 @@ rules:
   unicorn/catch-error-name: error
   unicorn/consistent-destructuring: error
   unicorn/consistent-function-scoping: off
-  unicorn/custom-error-definition: error
+  unicorn/custom-error-definition: warn
   unicorn/error-message: error
   unicorn/escape-case: off
   unicorn/expiring-todo-comments: off
@@ -46,7 +46,7 @@ rules:
   unicorn/no-zero-fractions: error
   unicorn/number-literal-case: error
   unicorn/numeric-separators-style: error
-  unicorn/prefer-add-event-listener: error
+  unicorn/prefer-add-event-listener: off
   unicorn/prefer-array-find: error
   unicorn/prefer-array-flat-map: error
   unicorn/prefer-array-flat: error
@@ -63,7 +63,7 @@ rules:
   unicorn/prefer-includes: error
   unicorn/prefer-keyboard-event-key: error
   unicorn/prefer-math-trunc: error
-  unicorn/prefer-modern-dom-apis: error
+  unicorn/prefer-modern-dom-apis: off # false positives
   unicorn/prefer-module: off
   unicorn/prefer-negative-index: error
   unicorn/prefer-node-protocol: off

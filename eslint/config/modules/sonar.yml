@@ -1,6 +1,10 @@
 # explore: true
 plugins:
   - eslint-plugin-sonarjs
+overrides:
+  - files: ["*.test.*", "*.spec.*"]
+    rules:
+      sonarjs/no-identical-functions: off
 rules:
   sonarjs/cognitive-complexity: [error, 42]
   sonarjs/elseif-without-else: off
@@ -16,7 +20,7 @@ rules:
   sonarjs/no-gratuitous-expressions: error
   sonarjs/no-identical-conditions: error
   sonarjs/no-identical-expressions: error
-  sonarjs/no-identical-functions: error
+  sonarjs/no-identical-functions: warn
   sonarjs/no-ignored-return: off # slow
   sonarjs/no-inverted-boolean-check: error
   sonarjs/no-nested-switch: error

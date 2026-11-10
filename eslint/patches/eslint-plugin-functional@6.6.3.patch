@@ -1,0 +1,56 @@
+diff --git a/lib/classic.cjs b/lib/classic.cjs
+index da13d683647d14b8fe7f80eccb6dbfdf4db75575..6f939a71a163c37fe8ecd4f0d3e5c34cd68ed989 100644
+--- a/lib/classic.cjs
++++ b/lib/classic.cjs
+@@ -3651,6 +3651,9 @@ function getNestedCallDescriptors(node, context, options) {
+  * Check if the given function node violates this rule.
+  */
+ function checkFunction(node, context, options) {
++    // Async wrappers convert synchronous returns and throws into Promise settlements.
++    if (node.async) return { context, descriptors: [] };
++
+     return {
+         context,
+         descriptors: [
+diff --git a/lib/classic.mjs b/lib/classic.mjs
+index a28cc0ac4c02acc70ead2be04b009bbbd12a737c..7006523eb3355c36a0e1896410f191664fc4bafa 100644
+--- a/lib/classic.mjs
++++ b/lib/classic.mjs
+@@ -3626,6 +3626,9 @@ function getNestedCallDescriptors(node, context, options) {
+  * Check if the given function node violates this rule.
+  */
+ function checkFunction(node, context, options) {
++    // Async wrappers convert synchronous returns and throws into Promise settlements.
++    if (node.async) return { context, descriptors: [] };
++
+     return {
+         context,
+         descriptors: [
+diff --git a/lib/flat.cjs b/lib/flat.cjs
+index 8a82de9256058b33f90dc12d367d48792276c191..d58b22b05670a0afd6c831e762197bda61b1d80a 100644
+--- a/lib/flat.cjs
++++ b/lib/flat.cjs
+@@ -3651,6 +3651,9 @@ function getNestedCallDescriptors(node, context, options) {
+  * Check if the given function node violates this rule.
+  */
+ function checkFunction(node, context, options) {
++    // Async wrappers convert synchronous returns and throws into Promise settlements.
++    if (node.async) return { context, descriptors: [] };
++
+     return {
+         context,
+         descriptors: [
+diff --git a/lib/flat.mjs b/lib/flat.mjs
+index 96f37ad5d86bf32085fcca054738edeb3e3bd3ac..0916bf4bbc9e5451032eaf7d6998153fadce7a8a 100644
+--- a/lib/flat.mjs
++++ b/lib/flat.mjs
+@@ -3626,6 +3626,9 @@ function getNestedCallDescriptors(node, context, options) {
+  * Check if the given function node violates this rule.
+  */
+ function checkFunction(node, context, options) {
++    // Async wrappers convert synchronous returns and throws into Promise settlements.
++    if (node.async) return { context, descriptors: [] };
++
+     return {
+         context,
+         descriptors: [

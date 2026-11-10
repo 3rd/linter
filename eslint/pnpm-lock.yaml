@@ -4,6 +4,14 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@typescript-eslint/eslint-plugin@8.32.1':
+    hash: a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a
+    path: patches/@typescript-eslint__eslint-plugin@8.32.1.patch
+  eslint-plugin-functional@6.6.3:
+    hash: 675d2385c474d822de5aa38e2eb6db776aa6ccbd072d64665f9065764908e875
+    path: patches/eslint-plugin-functional@6.6.3.patch
+
 importers:
 
   .:
@@ -25,7 +33,7 @@ importers:
         version: 9.3.4
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.32.1
-        version: 8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
+        version: 8.32.1(patch_hash=a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a)(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
       '@typescript-eslint/parser':
         specifier: ^8.32.1
         version: 8.32.1(eslint@8.57.0)(typescript@5.8.3)
@@ -37,10 +45,10 @@ importers:
         version: 1.5.0(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(@typescript-eslint/utils@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)
       eslint-plugin-functional:
         specifier: ^6.3.0
-        version: 6.6.3(eslint@8.57.0)(typescript@5.8.3)
+        version: 6.6.3(patch_hash=675d2385c474d822de5aa38e2eb6db776aa6ccbd072d64665f9065764908e875)(eslint@8.57.0)(typescript@5.8.3)
       eslint-plugin-jest:
         specifier: ^28.9.0
-        version: 28.9.0(@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
+        version: 28.9.0(@typescript-eslint/eslint-plugin@8.32.1(patch_hash=a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a)(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
       eslint-plugin-jest-dom:
         specifier: ^5.5.0
         version: 5.5.0(@testing-library/dom@9.3.4)(eslint@8.57.0)
@@ -4449,7 +4457,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)':
+  '@typescript-eslint/eslint-plugin@8.32.1(patch_hash=a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a)(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
       '@typescript-eslint/parser': 8.32.1(eslint@8.57.0)(typescript@5.8.3)
@@ -5361,7 +5369,7 @@ snapshots:
       eslint: 8.57.0
       ignore: 5.3.1
 
-  eslint-plugin-functional@6.6.3(eslint@8.57.0)(typescript@5.8.3):
+  eslint-plugin-functional@6.6.3(patch_hash=675d2385c474d822de5aa38e2eb6db776aa6ccbd072d64665f9065764908e875)(eslint@8.57.0)(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/utils': 7.4.0(eslint@8.57.0)(typescript@5.8.3)
       deepmerge-ts: 5.1.0
@@ -5424,12 +5432,12 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-jest@28.9.0(@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3):
+  eslint-plugin-jest@28.9.0(@typescript-eslint/eslint-plugin@8.32.1(patch_hash=a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a)(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/utils': 8.17.0(eslint@8.57.0)(typescript@5.8.3)
       eslint: 8.57.0
     optionalDependencies:
-      '@typescript-eslint/eslint-plugin': 8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
+      '@typescript-eslint/eslint-plugin': 8.32.1(patch_hash=a7908e0566a89ee5132c3ce6fb323abbb81273fbec7f1a5882cd9e500b67401a)(@typescript-eslint/parser@8.32.1(eslint@8.57.0)(typescript@5.8.3))(eslint@8.57.0)(typescript@5.8.3)
     transitivePeerDependencies:
       - supports-color
       - typescript

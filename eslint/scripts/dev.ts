@@ -1,31 +1,32 @@
 import { resolve } from "path";
-import { spawn } from "child_process";
-import { ChildProcessWithoutNullStreams } from "child_process";
+import { spawn, type ChildProcessWithoutNullStreams } from "child_process";
 import * as esbuild from "esbuild";
 
-const DEFINE = { DEBUG: true };
-let child: ChildProcessWithoutNullStreams | null = null;
+let explorerProcess: ChildProcessWithoutNullStreams | null = null;
 
-const run = () => {
+const restartExplorer = () => {
   const command = "node";
   const args = [resolve(__dirname, "../dist/main.js")];
-  if (child) {
-    child.stdin.end();
-    child.kill();
+
+  if (explorerProcess) {
+    explorerProcess.stdin.end();
+    explorerProcess.kill();
   }
-  child = spawn(command, args, { env: { ...process.env, EXPLORE: "1" } });
-  child.stdout.on("data", (data) => console.log(data.toString().trim()));
-  child.stderr.on("data", (data) => console.error(data.toString().trim()));
-  child.on("close", (code) => console.log(`[WATCH] Exit: ${code}`));
+
+  explorerProcess = spawn(command, args, { env: { ...process.env, EXPLORE: "1" } });
+  explorerProcess.stdout.on("data", (data) => console.log(data.toString().trim()));
+  explorerProcess.stderr.on("data", (data) => console.error(data.toString().trim()));
+  explorerProcess.on("close", (code) => console.log(`[WATCH] Exit: ${code}`));
 };
 
-const plugin: esbuild.Plugin = {
+const restartExplorerPlugin: esbuild.Plugin = {
   name: "on-rebuild",
   setup(build) {
     let buildCount = 0;
+
     build.onEnd(() => {
       console.log(`[WATCH] Build #${++buildCount}`);
-      run();
+      restartExplorer();
     });
   },
 };
@@ -37,17 +38,15 @@ const config: esbuild.BuildOptions = {
   platform: "node",
   target: ["node16.11.0"],
   format: "cjs",
-  external: ["eslint"],
+  external: ["eslint", "typescript"],
   minify: false,
-  define: Object.entries(DEFINE).reduce((acc, [k, v]) => {
-    acc[k] = JSON.stringify(v);
-    return acc;
-  }, {} as Record<string, string>),
-  plugins: [plugin],
+  define: { DEBUG: "true" },
+  plugins: [restartExplorerPlugin],
 };
 
-const main = async () => {
+const watchConfig = async () => {
   const ctx = await esbuild.context(config);
   await ctx.watch();
 };
-main();
+
+watchConfig();

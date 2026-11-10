@@ -1,0 +1,126 @@
+diff --git a/dist/rules/only-throw-error.js b/dist/rules/only-throw-error.js
+index 21196857a788acce12fc8d077f49b0a3e66258ca..eb9c1d4ca291a3dcad8f66cbdf738b8722cbb87b 100644
+--- a/dist/rules/only-throw-error.js
++++ b/dist/rules/only-throw-error.js
+@@ -38,6 +38,7 @@ const ts_api_utils_1 = require("ts-api-utils");
+ const ts = __importStar(require("typescript"));
+ const util_1 = require("../util");
+ const promiseUtils_1 = require("../util/promiseUtils");
++const { isDeclaredUnknown, isForwardedFailure } = require("../util/forwarded-failures");
+ exports.default = (0, util_1.createRule)({
+     name: 'only-throw-error',
+     meta: {
+@@ -126,6 +127,8 @@ exports.default = (0, util_1.createRule)({
+             return false;
+         }
+         function checkThrowArgument(node) {
++            if (isForwardedFailure(node, services)) return;
++
+             if (node.type === utils_1.AST_NODE_TYPES.AwaitExpression ||
+                 node.type === utils_1.AST_NODE_TYPES.YieldExpression) {
+                 return;
+@@ -144,7 +147,8 @@ exports.default = (0, util_1.createRule)({
+             if (options.allowThrowingAny && (0, util_1.isTypeAnyType)(type)) {
+                 return;
+             }
+-            if (options.allowThrowingUnknown && (0, util_1.isTypeUnknownType)(type)) {
++            if (options.allowThrowingUnknown &&
++                ((0, util_1.isTypeUnknownType)(type) || isDeclaredUnknown(node, services))) {
+                 return;
+             }
+             if ((0, util_1.isErrorLike)(services.program, type)) {
+diff --git a/dist/rules/prefer-promise-reject-errors.js b/dist/rules/prefer-promise-reject-errors.js
+index bc97e1c3d6d88f814e6f07ea93f4d54f497ed258..5e70ba37da8232d05f9f377c3540bafec8cb8e93 100644
+--- a/dist/rules/prefer-promise-reject-errors.js
++++ b/dist/rules/prefer-promise-reject-errors.js
+@@ -2,6 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const utils_1 = require("@typescript-eslint/utils");
+ const util_1 = require("../util");
++const { isDeclaredUnknown, isForwardedFailure } = require("../util/forwarded-failures");
+ exports.default = (0, util_1.createRule)({
+     name: 'prefer-promise-reject-errors',
+     meta: {
+@@ -48,11 +49,14 @@ exports.default = (0, util_1.createRule)({
+         function checkRejectCall(callExpression) {
+             const argument = callExpression.arguments.at(0);
+             if (argument) {
++                if (isForwardedFailure(argument, services)) return;
++
+                 const type = services.getTypeAtLocation(argument);
+                 if (options.allowThrowingAny && (0, util_1.isTypeAnyType)(type)) {
+                     return;
+                 }
+-                if (options.allowThrowingUnknown && (0, util_1.isTypeUnknownType)(type)) {
++                if (options.allowThrowingUnknown &&
++                    ((0, util_1.isTypeUnknownType)(type) || isDeclaredUnknown(argument, services))) {
+                     return;
+                 }
+                 if ((0, util_1.isErrorLike)(services.program, type) ||
+diff --git a/dist/util/forwarded-failures.js b/dist/util/forwarded-failures.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..51cdebd2114583248b923d59577ce307a7e6ff17
+--- /dev/null
++++ b/dist/util/forwarded-failures.js
+@@ -0,0 +1,61 @@
++"use strict";
++Object.defineProperty(exports, "__esModule", { value: true });
++const { AST_NODE_TYPES } = require("@typescript-eslint/utils");
++const { isBuiltinSymbolLikeRecurser, isErrorLike, isSymbolFromDefaultLibrary, isTypeUnknownType } = require("@typescript-eslint/type-utils");
++
++const isDeclaredUnknown = (node, services) => {
++    const checker = services.program.getTypeChecker();
++    const symbol = checker.getSymbolAtLocation(services.esTreeNodeToTSNodeMap.get(node));
++    if (!symbol?.valueDeclaration) return false;
++
++    const declaredType = checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
++    if (!isTypeUnknownType(declaredType)) return false;
++
++    // Only nullish narrowing preserves unknown; stronger narrowing can identify a non-Error value.
++    const currentType = services.getTypeAtLocation(node);
++
++    return checker.getNonNullableType(currentType) === checker.getNonNullableType(declaredType);
++};
++
++const isForwardedFailure = (node, services) => {
++    if (node.type === AST_NODE_TYPES.ChainExpression) return isForwardedFailure(node.expression, services);
++
++    const hasFallback = node.type === AST_NODE_TYPES.LogicalExpression && node.operator === "??";
++    if (hasFallback) {
++        const hasErrorFallback = isErrorLike(services.program, services.getTypeAtLocation(node.right));
++
++        return hasErrorFallback && isForwardedFailure(node.left, services);
++    }
++
++    const isReasonRead = node.type === AST_NODE_TYPES.MemberExpression &&
++        !node.computed && node.property.type === AST_NODE_TYPES.Identifier && node.property.name === "reason";
++    if (!isReasonRead) return false;
++
++    const checker = services.program.getTypeChecker();
++    const ownerType = checker.getNonNullableType(services.getTypeAtLocation(node.object));
++
++    // These library-owned fields forward existing failures despite being declared as any.
++    return isBuiltinSymbolLikeRecurser(services.program, ownerType, (type) => {
++        const symbol = type.getSymbol();
++        if (!symbol) return false;
++
++        const name = symbol.getName();
++        const isLibraryFailure = (name === "AbortSignal" || name === "PromiseRejectedResult") &&
++            isSymbolFromDefaultLibrary(services.program, symbol);
++        if (isLibraryFailure) return true;
++
++        // Node's global declaration has no package-name entry for package-specifier matching.
++        const isNodeSignal = name === "AbortSignal" && symbol.getDeclarations()?.some((declaration) => {
++            const sourceFile = declaration.getSourceFile();
++
++            return services.program.isSourceFileFromExternalLibrary(sourceFile) &&
++                /[/\\]@types[/\\]node[/\\]/u.test(sourceFile.fileName);
++        });
++        if (isNodeSignal) return true;
++
++        return null;
++    });
++};
++
++exports.isDeclaredUnknown = isDeclaredUnknown;
++exports.isForwardedFailure = isForwardedFailure;

@@ -9,7 +9,7 @@ rules:
   "@shopify/no-debugger": off
   "@shopify/no-fully-static-classes": error
   "@shopify/no-namespace-imports": off
-  "@shopify/no-useless-computed-properties": error
+  "@shopify/no-useless-computed-properties": off
   "@shopify/prefer-class-properties": off
   "@shopify/prefer-early-return": [error, { "maximumStatements": 3 }]
   "@shopify/prefer-module-scope-constants": off

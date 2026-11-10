@@ -5,34 +5,35 @@ import { Rule } from "../Rule";
 import { readYAML } from "../utils";
 import { getBuiltinRulesPlugin } from "./eslint-builtin";
 
-const plugins = (
-  readYAML(resolve(LINTER_CONFIG_DIR, "plugins.yml")) as ({ name: string; prefix: string } | string)[]
-).reduce<Record<string, { name: string; prefix: string; rules: Rule[] }>>((acc, curr) => {
-  const plugin = {
-    name: "",
-    prefix: "",
-    rules: [],
-  } as { name: string; prefix: string; rules: Rule[] };
+interface RegisteredPlugin {
+  name: string;
+  prefix: string;
+  rules: Rule[];
+}
 
-  if (typeof curr === "string") {
-    plugin.name = curr;
-    plugin.prefix = curr;
-  } else {
-    plugin.name = curr.name;
-    plugin.prefix = curr.prefix;
-  }
+type PluginConfig = Pick<RegisteredPlugin, "name" | "prefix"> | string;
+
+const loadPlugin = (config: PluginConfig) => {
+  const { name, prefix } = typeof config === "string" ? { name: config, prefix: config } : config;
+  const rules: Rule[] = [];
 
   const pluginModule =
-    plugin.name === "builtin" ? getBuiltinRulesPlugin() : (require(plugin.name) as unknown as IESLintPlugin);
+    name === "builtin" ? getBuiltinRulesPlugin() : (require(name) as unknown as IESLintPlugin);
   if (pluginModule.rules) {
-    for (const [k, v] of Object.entries(pluginModule.rules)) {
-      const rule = new Rule(k, v, plugin.prefix);
-      plugin.rules.push(rule);
+    for (const [ruleName, source] of Object.entries(pluginModule.rules)) {
+      rules.push(new Rule(ruleName, source, prefix));
     }
   }
 
-  acc[plugin.name] = plugin;
-  return acc;
+  return { name, prefix, rules };
+};
+
+const pluginConfigs = readYAML(resolve(LINTER_CONFIG_DIR, "plugins.yml")) as PluginConfig[];
+const plugins = pluginConfigs.reduce<Record<string, RegisteredPlugin>>((pluginsByName, config) => {
+  const plugin = loadPlugin(config);
+  pluginsByName[plugin.name] = plugin;
+
+  return pluginsByName;
 }, {});
 
 export { plugins };

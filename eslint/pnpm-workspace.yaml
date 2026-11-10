@@ -1,0 +1,3 @@
+patchedDependencies:
+  '@typescript-eslint/eslint-plugin@8.32.1': patches/@typescript-eslint__eslint-plugin@8.32.1.patch
+  eslint-plugin-functional@6.6.3: patches/eslint-plugin-functional@6.6.3.patch

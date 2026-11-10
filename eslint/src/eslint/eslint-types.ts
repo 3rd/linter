@@ -59,7 +59,8 @@ interface IESLintConfig {
       jsx?: boolean;
     };
     // @typescript-eslint/parser
-    project?: string[] | string;
+    project?: boolean | string[] | string;
+    projectService?: boolean;
     jsxPragma?: string;
     jsxFragmentName?: string;
     lib?: string[];

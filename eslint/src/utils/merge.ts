@@ -2,18 +2,24 @@ import isEqual from "lodash/isEqual";
 import mergeWith from "lodash/mergeWith";
 import unionWith from "lodash/unionWith";
 
-const merge = (...objs: unknown[]) => {
-  const out: unknown = {};
-  for (const obj of objs) {
+const merge = (...configs: unknown[]) => {
+  const mergedConfig: unknown = {};
+
+  for (const config of configs) {
     // eslint-disable-next-line @typescript-eslint/consistent-return
-    mergeWith(out, obj, (a: unknown, b: unknown) => {
-      if (Array.isArray(a) && Array.isArray(b)) {
-        if (a.length === 1 && b.length === 1 && isEqual(a[0], b[0])) return a as unknown[];
-        return unionWith(a, b, isEqual) as unknown[];
+    mergeWith(mergedConfig, config, (existingValue: unknown, incomingValue: unknown) => {
+      const areBothArrays = Array.isArray(existingValue) && Array.isArray(incomingValue);
+      if (areBothArrays) {
+        const hasSameSingleValue =
+          existingValue.length === 1 && incomingValue.length === 1 && isEqual(existingValue[0], incomingValue[0]);
+        if (hasSameSingleValue) return existingValue;
+
+        return unionWith(existingValue, incomingValue, isEqual);
       }
     });
   }
-  return out;
+
+  return mergedConfig;
 };
 
 export { merge };

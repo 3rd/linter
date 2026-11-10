@@ -1,10 +1,6 @@
 import * as esbuild from "esbuild";
 
-const DEFINE = {
-  DEBUG: false,
-};
-
-const main = async () => {
+const buildConfig = async () => {
   const config: esbuild.BuildOptions = {
     entryPoints: ["src/main.ts"],
     bundle: true,
@@ -12,13 +8,10 @@ const main = async () => {
     platform: "node",
     target: ["node16.11.0"],
     format: "cjs",
-    external: [],
+    external: ["typescript"],
     minify: false,
     metafile: true,
-    define: Object.entries(DEFINE).reduce((acc, [k, v]) => {
-      acc[k] = JSON.stringify(v);
-      return acc;
-    }, {} as Record<string, string>),
+    define: { DEBUG: "false" },
   };
 
   const result = await esbuild.build(config);
@@ -28,4 +21,4 @@ const main = async () => {
   console.log(text);
 };
 
-main();
+buildConfig();

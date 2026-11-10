@@ -1,11 +1,14 @@
 import fs from "fs";
 import path from "path";
+import { createHash } from "crypto";
 import { LINTER_ROOT } from "./env";
 import { Project } from "./Project";
 import { explore } from "./utils/explore-unconfigured-rules";
 
 const projectRoot = process.env.ESLINTER_DIR ?? process.cwd();
-const configPath = path.resolve(LINTER_ROOT, "output", `${Buffer.from(projectRoot).toString("base64")}.json`);
+const projectRootBase64 = Buffer.from(projectRoot).toString("base64");
+const outputFileHash = createHash("md5").update(projectRootBase64).digest("hex");
+const configPath = path.resolve(LINTER_ROOT, "output", `${outputFileHash}.json`);
 
 if (require.main === module) {
   const project = Project.resolveFromPath(projectRoot);

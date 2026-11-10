@@ -34,7 +34,7 @@ rules:
   no-useless-catch: error
   no-useless-call: error
   no-useless-backreference: error
-  no-use-before-define: error
+  no-use-before-define: [error, { functions: false, variables: false, classes: true }]
   no-unused-vars: error
   no-unused-labels: error
   no-unused-expressions: error
@@ -68,7 +68,7 @@ rules:
   require-atomic-updates: off
   radix:
     - error
-    - as-needed
+    - always
   prefer-template: error
   prefer-spread: error
   prefer-rest-params: error
@@ -84,7 +84,7 @@ rules:
   prefer-destructuring:
     - error
     - array: false
-  prefer-const: error
+  prefer-const: [error, { ignoreReadBeforeAssign: true }]
   prefer-arrow-callback: error
   object-shorthand: error
   no-with: error
@@ -118,13 +118,6 @@ rules:
   no-param-reassign:
     - error
     - props: true
-      ignorePropertyModificationsFor:
-        - acc
-        - accumulator
-        - carry
-        - draft
-      # ignorePropertyModificationsForRegex:
-      #   - ^acc
   no-octal-escape: error
   no-octal: warn
   no-obj-calls: error

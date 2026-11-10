@@ -1,10 +1,10 @@
 import { omit } from "lodash";
-import type { IESLintConfig, TESLintConfigRuleValue } from "./eslint/eslint-types";
+import type { IESLintConfig } from "./eslint/eslint-types";
 import { plugins as eslintPlugins } from "./eslint/plugins";
 import { Rule } from "./Rule";
 
 type TModuleConfig = IESLintConfig & {
-  match?: Record<string, boolean>;
+  match?: string | string[];
   enabled?: boolean;
   explore?: boolean;
 };
@@ -24,7 +24,10 @@ class Module {
       for (const pluginName of config.plugins) {
         const plugin = eslintPlugins[pluginName];
         if (!plugin) throw new Error(`Unknown plugin: ${pluginName}`);
-        for (const rule of plugin.rules) this.addRule(rule);
+
+        for (const rule of plugin.rules) {
+          this.addRule(new Rule(rule.name, rule.source, rule.prefix));
+        }
       }
     }
 
@@ -32,8 +35,8 @@ class Module {
       for (const [ruleName, ruleConfig] of Object.entries(config.rules)) {
         const rule = this.rules.get(ruleName);
         if (!rule) throw new Error(`[module:${name}] Can't find rule: ${ruleName}`);
+
         rule.setConfig(ruleConfig);
-        this.rules.set(ruleName, rule);
       }
     }
   }
@@ -52,16 +55,9 @@ class Module {
 
   getConfig() {
     return {
-      ...omit(this.config, "enabled", "match", "explore"),
+      ...omit(this.config, "enabled", "match", "explore", "rules"),
       plugins: (this.config.plugins ?? []).filter((name) => name !== "builtin"),
-      rules: Object.entries(Object.fromEntries(this.rules)).reduce<Record<string, TESLintConfigRuleValue>>(
-        (acc, [key, rule]) => {
-          acc[key] = rule.config;
-          return acc;
-        },
-        {},
-      ),
-    } as IESLintConfig;
+    };
   }
 }
 
